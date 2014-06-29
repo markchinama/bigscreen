@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mark.bus"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="10" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name="com.mark.bus.app.BusApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        <activity
+            android:name="com.mark.bus.app.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.ModelActivity"
+            android:label="abc"
+            android:theme="@style/MyTransparent" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.ACModelActivity"
+            android:label="abc"
+            android:theme="@style/MyTransparent" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.DataSettingActivity"
+            android:label="abc"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.WholeActivity"
+            android:label="abc"
+            android:theme="@style/dialog" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.BatteryManagementActivity"
+            android:label="abcd"
+            android:theme="@style/dialog" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.BusCanActivity"
+            android:label="abc"
+            android:theme="@style/dialog" >
+        </activity>
+        <activity
+            android:name="com.mark.bus.app.CrashActivity"
+            android:label="abc"
+            android:theme="@style/Theme.Model" >
+        </activity>
+    </application>
+
+</manifest>

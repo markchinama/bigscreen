@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/batterypopupbg"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/cheshencan"
+            android:textColor="#ffffff"
+            android:textSize="22px"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/bca_closebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="580px"
+            android:background="@drawable/closebutton" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp" >
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_qianmentabudeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qianmentabudeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zuoxinglicangzhaomingdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zuoxinglicangzhaomingdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_houwudeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/houwudeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_yuanguangdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/yuanguangdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_youxinglicangzhaomingdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/youxinglicangzhaomingdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zhidongdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zhidongdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_qianwudeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qianwudeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zhongmentabudeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zhongmentabudeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_daochedeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/daochedeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_jinguangdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/jinguangdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_weishengjianyourenzhishideng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/weishengjianyourenzhishideng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_gaoyacangdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/gaoyacangdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_qianmenkaidiancifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qianmenkaidiancifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_dianshijidianyuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/dianshijidianyuan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_qidongjidianqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qidongjidianqi"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_qianmenguandiancifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qianmenguandiancifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zhongmenguanmendiacifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zhongmenguanmendiacifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_weishengjianqiangzhipaiwufa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/weishengjianqiangzhipaiwufa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_penshuidianji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/penshuidianji"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zhongmenkaimendiancifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zhongmenkaimendiancifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_nuanshuidiancifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/nuanshuidiancifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_qilaba"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qilaba"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_lupaideng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/lupaideng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_lupaidianyuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/lupaidianyuan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_zuoqianzhuanxiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zuoqianzhuanxiang"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_yuedudengshuru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/yuedudengshuru"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_houcangmendianciganyingshixianweikaiguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/houcangmendianciganyingshixianweikaiguan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_youqianxhuanxiang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/youqianxhuanxiang"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_dingdanbaideng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/dingdanbaideng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_fadianjishuiweichuanganqidianyuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/fadianjishuiweichuanganqidianyuan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_yuguaqikuaidang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/yuguaqikuaidang"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_dingshuangbaideng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/dingshuangbaideng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_cedianzilupai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/cedianzilupai"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_kongtiaokaiguandianyuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/kongtiaokaiguandianyuan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_jiashiyuandingdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/jiashiyuandingdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_disansuidongqiaokongzhidiancifa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/disansuidongqiaokongzhidiancifa"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_ganzaoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/ganzaoji"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_youzhuanxiangdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/youzhuanxiangdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_weishengjian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/weishengjian"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_shigaodeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/shigaodeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zuozhuanxiangdeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zuozhuanxiangdeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_zhizongdianyuanjidianqi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/zhizongdianyuanjidianqi"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_yuguaqimandang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/yuguaqimandang"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_dinglandeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/dinglandeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_houdianzilupai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/houdianzilupai"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+
+        <TableRow>
+
+            <ImageView
+                android:id="@+id/bca_jiansuqidianyuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/jiansuqidianyuan"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_xinglijiadeng"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/xinglijiadeng"
+                android:textColor="#000000"
+                android:textSize="14px" />
+
+            <ImageView
+                android:id="@+id/bca_qiandianzilupai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:background="@drawable/offstatus" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="@string/qiandianzilupai"
+                android:textColor="#000000"
+                android:textSize="14px" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

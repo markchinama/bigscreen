@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal" >
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content" >
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/zhiliucedianya"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_zhiliucedianya"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjixiangdianliu"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjixiangdianliu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjiwendu"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjiwendu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjikongzhiqiwendu"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/cm_dianjikongzhiqiwendu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizuidazhidongzhuanju"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizuidazhidongzhuanju"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizuidazhidonggonglv"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizuidazhidonggonglv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizuidadiandongzhuanju"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizuidadiandongzhuanju"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizuidaqudonggonglv"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizuidaqudonggonglv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizhuansu"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizhuansu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjizhuanju"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjizhuanju"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/separateline" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/darkbg" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content" >
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/readyxinhao"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_readyxinhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/zhujiechuqizhuangtai"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_zhujiechuqizhuangtai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjiyunzhuanfangxiang"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjiyunzhuanfangxiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/nengliangliudongfangxiang"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_nengliangliudongfangxiang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/dianjikongzhiqiyunxingzhuangtai"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_dianjikongzhiqiyunxingzhuangtai"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="210px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp" >
+
+            <TableRow android:background="@drawable/brightbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/zhuansuzhuanjumoshi"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_zhuansuzhuanjumoshi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+
+            <TableRow android:background="@drawable/darkbg" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="@string/kongzhuan"
+                    android:textColor="#5e3a14"
+                    android:textSize="14px" />
+
+                <TextView
+                    android:id="@+id/mc_kongzhuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    
+                    android:textColor="#000000"
+                    android:textSize="14px" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</LinearLayout>
