@@ -289,7 +289,6 @@
                 android:src="@drawable/front_light_on"
                 android:visibility="gone" />
 
-            
             <ImageView
                 android:id="@+id/frontheadlighton"
                 android:layout_width="wrap_content"
@@ -552,45 +551,76 @@
             android:textSize="14px"
             android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="33px"
-            android:layout_marginTop="90px"
-            android:text="22℃"
-            android:textSize="26px" />
-
         <!-- 横杆 温度调节 -->
 
         <LinearLayout
-            android:layout_width="160px"
+            android:layout_width="290px"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="20px"
             android:orientation="vertical" >
 
-            <ImageButton
-                android:id="@+id/ac_model"
-                android:layout_width="fill_parent"
-                android:layout_height="20px"
-                android:background="@drawable/ac_model" >
-            </ImageButton>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
-            <SeekBar
-                android:id="@+id/item_list_temprature_seekbar"
-                android:layout_width="140px"
-                android:layout_height="30px"
-                android:layout_marginLeft="7px"
-                android:layout_marginTop="73px"
-                android:max="100"
-                android:maxHeight="6px"
-                android:paddingLeft="-15dip"
-                android:paddingRight="-15dip"
-                android:progress="3"
-                android:progressDrawable="@drawable/fun_score"
-                android:thumb="@drawable/fun_seekbar_thumb"
-                android:thumbOffset="0dip" />
-            <!-- 横杆 温度调节 完 -->
+                <ImageView
+                    android:id="@+id/ac_modle_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20px"
+                    android:layout_marginLeft="30px"
+                    android:background="@drawable/acsaofeng" >
+                </ImageView>
 
+                <ImageButton
+                    android:id="@+id/ac_model"
+                    android:layout_width="200px"
+                    android:layout_height="60px"
+                    android:background="@drawable/ac_model" >
+                </ImageButton>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/real_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25px"
+                    android:text="22℃"
+                    android:textSize="26px" />
+
+                <TextView
+                    android:id="@+id/acfengsudangwei"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10px"
+                    android:text="5"
+                    android:textColor="#ff9900"
+                    android:textSize="26px" />
+
+                <SeekBar
+                    android:id="@+id/item_list_temprature_seekbar"
+                    android:layout_width="140px"
+                    android:layout_height="30px"
+                    android:layout_marginLeft="11px"
+                    android:layout_marginTop="3px"
+                    android:max="100"
+                    android:maxHeight="6px"
+                    android:paddingLeft="-15dip"
+                    android:paddingRight="-15dip"
+                    android:progress="3"
+                    android:progressDrawable="@drawable/fun_score"
+                    android:thumb="@drawable/fun_seekbar_thumb"
+                    android:thumbOffset="0dip" />
+
+                <!-- 横杆 温度调节 完 -->
+
+            </LinearLayout>
 
             <!-- 功率 -->
         </LinearLayout>

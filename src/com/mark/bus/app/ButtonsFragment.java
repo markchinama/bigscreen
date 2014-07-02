@@ -1,7 +1,6 @@
 package com.mark.bus.app;
 
 import com.mark.bus.R;
-import com.mark.bus.app.MainActivity.AnimationHandler;
 import com.mark.bus.data.DataHandler;
 
 import android.os.Bundle;
@@ -48,7 +47,6 @@ public class ButtonsFragment extends Fragment {
 
 	private ImageButton noneButton;
 
-	private AnimationHandler animHandler;
 
 	public void intialize() {
 		BusApplication ba = (BusApplication) ButtonsFragment.this.getActivity()
@@ -75,8 +73,7 @@ public class ButtonsFragment extends Fragment {
 		// return super.onCreateView(inflater, container, savedInstanceState);
 		View view = inflater.inflate(R.layout.buttons_fragment, container,
 				false);
-		animHandler = ((BusApplication) this.getActivity().getApplication())
-				.getAnimhandler();
+
 		frontFogButton = (ImageButton) view.findViewById(R.id.button_front_fog);
 		rearFogButton = (ImageButton) view.findViewById(R.id.button_rear_fog);
 		hyperbaricCabinButton = (ImageButton) view
@@ -137,8 +134,8 @@ public class ButtonsFragment extends Fragment {
 				ba.setButtonStatus(buttonStatus);
 				v.setBackgroundResource(lightsOffResource[id]);
 			}
-			DataHandler.setButtonsStatus(buttonStatus);
-			animHandler.sendEmptyMessage(0);
+			//DataHandler.setButtonsStatus(buttonStatus);
+			//animHandler.sendEmptyMessage(0);
 
 		}
 

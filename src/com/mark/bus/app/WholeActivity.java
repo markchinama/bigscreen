@@ -11,6 +11,8 @@ import com.mark.bus.data.DataHandler1;
 import android.app.Activity;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.Window;
@@ -65,7 +67,7 @@ public class WholeActivity extends FragmentActivity {
 		DataFromWholeController9 dw9 = DataHandler1.dw9;
 		tv_chesu = (TextView) this.findViewById(R.id.wc_chesu);
 		tv_chesu.setText(Float.toString(dw3.shishichesu));
-		
+
 		tv_dangwei = (TextView) this.findViewById(R.id.wc_dangwei);
 		if (dw1.daodangxinhao == 1)
 			tv_dangwei.setText("R");
@@ -79,7 +81,7 @@ public class WholeActivity extends FragmentActivity {
 
 		tv_youmen = (TextView) this.findViewById(R.id.wc_youmen);
 		tv_youmen.setText(Float.toString(dw2.youmenmonixihao));
-		
+
 		iv_dianzhidong = (ImageView) this.findViewById(R.id.wc_dianzhidong);
 		if (dw1.dianzhidongyouxiaoxinhao == 1) {
 			iv_dianzhidong.setBackgroundResource(R.drawable.onstatus);
@@ -91,31 +93,31 @@ public class WholeActivity extends FragmentActivity {
 			iv_dianjizhidongyouxianxinhao
 					.setBackgroundResource(R.drawable.onstatus);
 		}
-		
+
 		iv_zhuchexinhao = (ImageView) this.findViewById(R.id.wc_zhuchexinhao);
 		if (dw1.zhuchexinhao == 1)
 			iv_zhuchexinhao.setBackgroundResource(R.drawable.onstatus);
-		
+
 		iv_zhidongxinhao = (ImageView) this
-				.findViewById(R.id.wc_zhidongxinhao1);
+				.findViewById(R.id.wc_zhidongxinhao);
 		if (dw1.zhidongkaiguan == 1)
 			iv_zhidongxinhao.setBackgroundResource(R.drawable.onstatus);
 		iv_yisukaiguan = (ImageView) this.findViewById(R.id.wc_yisukaiguan);
 		if (dw1.yisukaiguan == 1)
 			iv_yisukaiguan.setBackgroundResource(R.drawable.onstatus);
-		
+
 		iv_zhujiechuqizhuangtai = (ImageView) this
 				.findViewById(R.id.wc_zhujiechuqixinhao);
 		if (dw1.zhujiechuqizhuangtai == 1)
 			iv_zhujiechuqizhuangtai.setBackgroundResource(R.drawable.onstatus);
-		
+
 		iv_gaoyashouzhaxinhao = (ImageView) this
 				.findViewById(R.id.wc_gaoyashouzhaxinhao);
 		// //////////////////////////////////////////////////////
-		
+
 		if (dw1.gaoyaqiaobanbihexinhao == 1)
 			iv_gaoyashouzhaxinhao.setBackgroundResource(R.drawable.onstatus);
-		
+
 		iv_yaoshiacc = (ImageView) this.findViewById(R.id.wc_yaoshiacc);
 		if (dw1.yaoshiaccxinhao == 1)
 			iv_yaoshiacc.setBackgroundResource(R.drawable.onstatus);
@@ -129,7 +131,7 @@ public class WholeActivity extends FragmentActivity {
 		if (dw2.zhengchexitongzhengchangzhishixinhao == 1)
 			iv_ready.setBackgroundResource(R.drawable.onstatus);
 		iv_kongtiaoqidong = (ImageView) this
-				.findViewById(R.id.wc_kongtiaoqidong1);
+				.findViewById(R.id.wc_kongtiaoqidong);
 
 		if (dw1.kongtiaoqidongxinhao == 1)
 			iv_kongtiaoqidong.setBackgroundResource(R.drawable.onstatus);
@@ -141,7 +143,7 @@ public class WholeActivity extends FragmentActivity {
 				.findViewById(R.id.wc_kongtiaogonglvshuaijianshineng);
 
 		iv_shuibengqidong = (ImageView) this
-				.findViewById(R.id.wc_shuibengqidong1);
+				.findViewById(R.id.wc_shuibengqidong);
 		if (dw1.shuibengkongzhixinhao == 1)
 			iv_shuibengqidong.setBackgroundResource(R.drawable.onstatus);
 
@@ -149,8 +151,9 @@ public class WholeActivity extends FragmentActivity {
 		tv_zhengcheqiya.setText(Float.toString(dw1.zhengcheqiya));
 		tv_shengyuchongdianshijian = (TextView) this
 				.findViewById(R.id.wc_shengyuchongdianshijian);
-	                           	
-		tv_shengyuchongdianshijian.setText(Integer.toString(dw9.shengyuchongdianshijian));
+
+		tv_shengyuchongdianshijian.setText(Integer
+				.toString(dw9.shengyuchongdianshijian));
 		tv_fandianjifadiangonglv = (TextView) this
 				.findViewById(R.id.wc_fandianjifadiangonglv);
 		// /////////////////////////////////////////////tv_fandianjifadiangonglv.setText(dw2.)
@@ -223,6 +226,8 @@ public class WholeActivity extends FragmentActivity {
 				finish();
 
 			}
+
+			
 		});
 
 		Window window = getWindow();
@@ -234,8 +239,8 @@ public class WholeActivity extends FragmentActivity {
 		wl.width = 768;
 		wl.height = 770;
 		window.setAttributes(wl);
-
-		initialize();
+				
+		 initialize();
 	}
 
 }

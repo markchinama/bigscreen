@@ -34,8 +34,8 @@ public class MainActivity extends FragmentActivity {
 	// for demo
 	private int fakeCount = 0;
 	private UpdataUIHandler updataUIHandler = new UpdataUIHandler();
-	private updataUIThread updateUIThread = new updataUIThread();
-
+	private UpdateUIThread updateUIThread = new UpdateUIThread();
+	private SendDataThread sendDataThread = new SendDataThread();
 	// datas
 	DataHandler dh = new DataHandler();
 	private boolean acon = false;
@@ -62,6 +62,8 @@ public class MainActivity extends FragmentActivity {
 	private ImageButton model_btn;
 	private ImageButton[] topButtons = new ImageButton[5];
 
+	private TextView real_temperature;
+	private TextView acfengsudangwei;
 	private int[] unpressedBackGround = { R.drawable.button_bus_info_pressed,
 			R.drawable.button_bus_control_pressed,
 			R.drawable.button_bus_cameral_pressed,
@@ -94,6 +96,7 @@ public class MainActivity extends FragmentActivity {
 	private TextView ac_text;
 	private TextView power_text;
 	private SeekBar sb;
+	private ImageView ac_modle_image;
 
 	private TextView status_battery_panel_number;
 	private TextView status_energy_panel_number;
@@ -101,8 +104,8 @@ public class MainActivity extends FragmentActivity {
 
 	// handlers
 	private ModelHandler modelHandler = new ModelHandler();
-	private AnimationHandler animHandler = new AnimationHandler();
-
+	private ACModeHandler acModeHandler = new ACModeHandler();
+	private CrashHandler crashHandler = new CrashHandler();
 	// model
 	int[] bgSource = { R.drawable.eco, R.drawable.normal, R.drawable.power,
 			R.drawable.snow };
@@ -168,6 +171,8 @@ public class MainActivity extends FragmentActivity {
 		animationDrawable2 = (AnimationDrawable) anim_rear_wheel
 				.getBackground();
 
+		real_temperature = (TextView) this.findViewById(R.id.real_temperature);
+		acfengsudangwei = (TextView) this.findViewById(R.id.acfengsudangwei);
 		model_btn = (ImageButton) this.findViewById(R.id.model_btn);
 		homeButton = (ImageButton) this.findViewById(R.id.homebutton);
 		homeButton.setOnLongClickListener(new View.OnLongClickListener() {
@@ -194,8 +199,9 @@ public class MainActivity extends FragmentActivity {
 		topButtons[3] = expertButton;
 		topButtons[4] = listHomeButton;
 		ba = (BusApplication) getApplication();
-		ba.setCrashHandler(new CrashHandler());
-		ba.setAnimhandler(animHandler);
+		ba.setCrashHandler(crashHandler);
+		ba.setHandler(modelHandler);
+		ba.setAcModleHandler(acModeHandler);
 		model_btn.setOnClickListener(new ModelButtonListner());
 		infoButton.setOnClickListener(new TopbuttonListener(0));
 		controlButton.setOnClickListener(new TopbuttonListener(1));
@@ -226,16 +232,28 @@ public class MainActivity extends FragmentActivity {
 				int seekProgress = sb.getProgress();
 				if (seekProgress < 10) {
 					sb.setProgress(3);
+					DataHandler.ac2bus.fengsudangwei = 1;
+					acfengsudangwei.setText("1");
 				} else if (seekProgress >= 10 && seekProgress < 30) {
 					sb.setProgress(21);
+					DataHandler.ac2bus.fengsudangwei = 2;
+					acfengsudangwei.setText("2");
 				} else if (seekProgress >= 30 && seekProgress < 50) {
 					sb.setProgress(42);
+					DataHandler.ac2bus.fengsudangwei = 3;
+					acfengsudangwei.setText("3");
 				} else if (seekProgress >= 50 && seekProgress < 70) {
 					sb.setProgress(63);
+					DataHandler.ac2bus.fengsudangwei = 4;
+					acfengsudangwei.setText("4");
 				} else if (seekProgress >= 70 && seekProgress < 90) {
 					sb.setProgress(80);
+					DataHandler.ac2bus.fengsudangwei = 5;
+					acfengsudangwei.setText("5");
 				} else if (seekProgress >= 90) {
 					sb.setProgress(100);
+					DataHandler.ac2bus.fengsudangwei = 6;
+					acfengsudangwei.setText("6");
 				}
 			}
 
@@ -246,6 +264,7 @@ public class MainActivity extends FragmentActivity {
 		initializeAnimation();
 		showFragment(busFragment);
 		updateUIThread.start();
+		sendDataThread.start();
 	}
 
 	public void stopAllAnimation() {
@@ -603,7 +622,8 @@ public class MainActivity extends FragmentActivity {
 
 		ac_text.setText(new Integer(DataHandler.ac2bus.shedingwendu).toString()
 				+ "℃");
-		power_text.setText("1000");
+		power_text.setText(new Float(DataHandler.ac2bus.kongtiaogonglv)
+				.toString() + "kw");
 
 	}
 
@@ -616,7 +636,7 @@ public class MainActivity extends FragmentActivity {
 
 		ac_text = (TextView) this.findViewById(R.id.ac_text);
 		power_text = (TextView) this.findViewById(R.id.power_text);
-
+		ac_modle_image = (ImageView) this.findViewById(R.id.ac_modle_image);
 		acModelButton = (ImageButton) this.findViewById(R.id.ac_model);
 		listHomeButton = (ImageButton) this.findViewById(R.id.item_list_home);
 		acShowDownButton = (ImageButton) this.findViewById(R.id.ac_shut_down);
@@ -624,7 +644,6 @@ public class MainActivity extends FragmentActivity {
 		acShowDownButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View arg0) {
-				System.out.println(acon);
 				if (!acon) {
 					av1.setVisibility(View.VISIBLE);
 					av1.setVisibility(View.VISIBLE);
@@ -639,10 +658,14 @@ public class MainActivity extends FragmentActivity {
 					airAnimationStart4();
 					airAnimationStart5();
 					airAnimationStart6();
+					acShowDownButton.setBackgroundResource(R.drawable.air_on);
+					DataHandler.ac2bus.kongtiaogongzuozhuangtai = 1;
 					acon = true;
 				} else {
 					stopAllAnimation();
+					DataHandler.ac2bus.kongtiaogongzuozhuangtai = 0;
 					acon = false;
+					acShowDownButton.setBackgroundResource(R.drawable.air_off);
 					av1.setVisibility(View.GONE);
 					av1.setVisibility(View.GONE);
 					av2.setVisibility(View.GONE);
@@ -686,25 +709,23 @@ public class MainActivity extends FragmentActivity {
 		});
 		powerUpButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String con = power_text.getText().toString();
-				int power = new Integer(con).intValue();
-				// int temperature = new Integer(ac_text.getText().toString());
-				power += 100;
-				String tx = new Integer(power).toString();
+				DataHandler.ac2bus.kongtiaogonglv += 0.5f;
+				float power = DataHandler.ac2bus.kongtiaogonglv;
 
-				power_text.setText(tx);
+				String tx = new Float(power).toString();
+
+				power_text.setText(tx + "kw");
 
 			}
 		});
 		powerDownButton.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				String con = power_text.getText().toString();
-				int power = new Integer(con).intValue();
-				// int temperature = new Integer(ac_text.getText().toString());
-				power -= 100;
-				String tx = new Integer(power).toString();
+				DataHandler.ac2bus.kongtiaogonglv -= 0.5f;
+				float power = DataHandler.ac2bus.kongtiaogonglv;
 
-				power_text.setText(tx);
+				String tx = new Float(power).toString();
+
+				power_text.setText(tx + "kw");
 
 			}
 		});
@@ -768,7 +789,8 @@ public class MainActivity extends FragmentActivity {
 		public boolean onTouch(View v, MotionEvent event) {
 
 			if (event.getAction() == MotionEvent.ACTION_DOWN) {
-				airBg.setBackgroundResource(airOnTouchBg[airId]);
+				if (airId != 1)
+					airBg.setBackgroundResource(airOnTouchBg[airId]);
 			} else if (event.getAction() == MotionEvent.ACTION_UP) {
 				airBg.setBackgroundResource(R.drawable.airbg);
 			}
@@ -823,22 +845,12 @@ public class MainActivity extends FragmentActivity {
 
 		public void onClick(View v) {
 
-			ba.setHandler(modelHandler);
-
 			Intent intent = new Intent(MainActivity.this, ModelActivity.class);
 
 			MainActivity.this.startActivity(intent);
 
 		}
 
-	}
-
-	final class AnimationHandler extends Handler {
-		@Override
-		public void handleMessage(Message msg) {
-			System.out.println(123);
-			buslightoff.setVisibility(View.VISIBLE);
-		}
 	}
 
 	class ACModelButtonListner implements OnClickListener {
@@ -863,9 +875,9 @@ public class MainActivity extends FragmentActivity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method
-			// stub
-			System.out.println(dh.getInt(bid));
+
+			if(currentTopButtonId ==bid)
+				return;
 			showPress(bid);
 
 			if (v.equals(controlButton)) {
@@ -907,6 +919,22 @@ public class MainActivity extends FragmentActivity {
 			// commit after activity saveInstatance ,pls use
 			// commitAllowingStateLoss
 			transaction.commitAllowingStateLoss();
+		}
+	}
+
+	final class ACModeHandler extends Handler {
+		@Override
+		public void handleMessage(Message msg) {
+
+			if (msg.what == 1) {
+				ac_modle_image.setBackgroundResource(R.drawable.acsaofeng);
+			}
+			if (msg.what == 2) {
+				ac_modle_image.setBackgroundResource(R.drawable.aczhileng);
+			}
+			if (msg.what == 0) {
+				ac_modle_image.setBackgroundResource(R.drawable.aczhire);
+			}
 		}
 	}
 
@@ -990,7 +1018,7 @@ public class MainActivity extends FragmentActivity {
 		}
 	}
 
-	private class updataUIThread extends Thread {
+	private class UpdateUIThread extends Thread {
 
 		@Override
 		public void run() {
@@ -1006,4 +1034,21 @@ public class MainActivity extends FragmentActivity {
 			}
 		}
 	}
+
+	private class SendDataThread extends Thread {
+		public void run() {
+			while (true) {
+				try {
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				DataHandler.setButtons(ba.getButtonStatus());
+				DataHandler.setACData();
+			}
+		}
+	}
+
 }

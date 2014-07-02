@@ -224,11 +224,22 @@
     <string name="insulationwarning03">一级告警  绝缘电阻小于 80K</string>
     <string name="zuozhuanxiangdeng">左转向灯</string>
     <string name="youzhuanxiangdeng">右转向灯</string>
+    <string name="devicestatus">设备状态:</string>
     <string name="zijian">自检</string>
     <string name="zhengchang">正常</string>
     <string name="tongxunguzhang">通讯故障</string>
+    <string name="qitiduseguzhang">气体堵塞故障</string>
     <string name="duseguzhang">堵塞故障</string>
     <string name="yanwujinjiguzhang">烟雾紧急报警</string>
     <string name="shebeiguzhang">设备故障</string>
-
+<string name="unconnect">断开</string>
+    <string name="connect">闭合</string>
+    <string name="normalturning">正转</string>
+    <string name="reverseturning">反转</string>
+    <string name="diandong">电动</string>
+    <string name="fadian">发电</string>
+    <string name="normal">正常</string>
+    <string name="issue">故障</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
 </resources>

@@ -80,6 +80,7 @@ public class BusCanActivity extends FragmentActivity {
 		if (dbcm.zuoxinglicangzhaomingdeng == 1)
 			iv_zuoxinglicangzhaomingdeng
 					.setBackgroundResource(R.drawable.onstatus);
+		System.out.println("******************************************"+dbcm.houwudeng);
 
 		iv_houwudeng = (ImageView) this.findViewById(R.id.bca_houwudeng);
 		if (dbcm.houwudeng == 1)

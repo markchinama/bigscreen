@@ -85,7 +85,7 @@
                     android:textSize="14px" />
 
                 <TextView
-                    android:id="@+id/cm_dianjikongzhiqiwendu"
+                    android:id="@+id/mc_dianjikongzhiqiwendu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"

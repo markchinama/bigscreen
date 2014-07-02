@@ -5,6 +5,6 @@ public class ACData2Bus extends BusSendData {
 	public int shedingwendu =26;
 	public int kongtiaosongfengmoshi;
 	public int kongtiaogongzuomoshi;
-	public int kongtiaogonglv;
+	public float kongtiaogonglv=1;
 	public int kongtiaogongzuozhuangtai;
 }

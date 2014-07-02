@@ -510,7 +510,7 @@ typedef struct screen_send2ac {
 	unsigned char wind_speed_position;
 	unsigned char temperature;
 	unsigned char ac_wind_mode :4;
-	unsigned char ac__mode :4;
+	unsigned char ac_mode :4;
 	unsigned char ac_power;
 	unsigned char ac_switch;
 

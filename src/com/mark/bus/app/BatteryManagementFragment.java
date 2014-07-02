@@ -3,6 +3,8 @@ package com.mark.bus.app;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,6 +22,19 @@ import com.mark.bus.data.DataHandler1;
 
 public class BatteryManagementFragment extends Fragment {
 
+	@Override
+	public void onPause() {
+
+		stop=true;
+		super.onPause();
+	}
+
+	private CharSequence jinzhichongdian ;
+	private CharSequence yunxuchongdian ;
+	private CharSequence yilianjie ;
+	private CharSequence weilianjie;
+	
+	private boolean stop = false;
 	private boolean flag = true;
 	private TableRow tab11;
 	private TableRow tab12;
@@ -60,7 +75,8 @@ public class BatteryManagementFragment extends Fragment {
 	private TextView tv_zuididianyadianchixiangjieshu;
 	private TextView tv_chongdianzhuanglianjiebiaozhiwei;
 	private TextView tv_jinzhichongdianbiaozhi;
-
+	Handler mHandler;	
+	Thread uiThread ;
 	public void initialize() {
 		DataFromBMS1 db1 = DataHandler1.db1;
 		DataFromBMS2 db2 = DataHandler1.db2;
@@ -146,78 +162,28 @@ public class BatteryManagementFragment extends Fragment {
 		tv_jinzhichongdianbiaozhi = (TextView) view
 				.findViewById(R.id.bmf_jinzhichongdianbiaozhi);
 		if (db1.shifoujinzhichongdianbiaozhiwei == 1) {
-			tv_jinzhichongdianbiaozhi.setText((CharSequence) this
-					.getResources().getString(R.string.jinzhichongdian));
+			tv_jinzhichongdianbiaozhi.setText(jinzhichongdian);
 		} else {
-			tv_jinzhichongdianbiaozhi.setText((CharSequence) this
-					.getResources().getString(R.string.yunxuchongdian));
+			tv_jinzhichongdianbiaozhi.setText(yunxuchongdian);
 		}
-		tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) Integer
-				.toString(db1.shifoujinzhichongdianbiaozhiwei));
+
 		if (db1.shifoujinzhichongdianbiaozhiwei == 1) {
-			tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) this
-					.getResources().getString(R.string.yilianjie));
+			tv_chongdianzhuanglianjiebiaozhiwei.setText(yilianjie);
 		} else {
-			tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) this
-					.getResources().getString(R.string.weilianjie));
+			tv_chongdianzhuanglianjiebiaozhiwei.setText(weilianjie);
 		}
-	}
-
-	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		collapse = (ImageButton) this.getActivity().findViewById(R.id.collapse);
-		System.out.println(collapse);
-		collapse.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				System.out.println("123223e4234搜1索132499991243124124123412412");
-				
-				if (!flag) {
-					tab11.setVisibility(View.GONE);
-					tab12.setVisibility(View.GONE);
-					tab13.setVisibility(View.GONE);
-					tab14.setVisibility(View.GONE);
-					tab21.setVisibility(View.GONE);
-					tab22.setVisibility(View.GONE);
-					tab23.setVisibility(View.GONE);
-					tab24.setVisibility(View.GONE);
-					tab31.setVisibility(View.GONE);
-					tab32.setVisibility(View.GONE);
-					v.setBackgroundResource(R.drawable.batterytopbtnopen);
-					flag = true;
-				} else {
-					tab11.setVisibility(View.VISIBLE);
-					tab12.setVisibility(View.VISIBLE);
-					tab13.setVisibility(View.VISIBLE);
-					tab14.setVisibility(View.VISIBLE);
-					tab21.setVisibility(View.VISIBLE);
-					tab22.setVisibility(View.VISIBLE);
-					tab23.setVisibility(View.VISIBLE);
-					tab24.setVisibility(View.VISIBLE);
-					tab31.setVisibility(View.VISIBLE);
-					tab32.setVisibility(View.VISIBLE);
-					v.setBackgroundResource(R.drawable.batterytopbtnclose);
-					flag = false;
-				}
-
-			}
-		});
-		
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		view = inflater.inflate(R.layout.battery_management_fragment,
 				container, false);
-
+		 jinzhichongdian = this.getResources().getString(R.string.jinzhichongdian);
+yunxuchongdian = this.getResources().getString(R.string.yunxuchongdian);
+		yilianjie = this.getResources().getString(R.string.yilianjie);
+		 weilianjie = this.getResources().getString(R.string.weilianjie);
 		
-
-		
-
 		tab11 = (TableRow) view.findViewById(R.id.v11);
 		tab12 = (TableRow) view.findViewById(R.id.v12);
 		tab13 = (TableRow) view.findViewById(R.id.v13);
@@ -265,7 +231,29 @@ public class BatteryManagementFragment extends Fragment {
 		};
 
 		view.setOnTouchListener(mTouchListener);
-		initialize();
+		//initialize();
+		uiThread =new Thread(){
+	    	@Override
+	    	public void run(){
+	    		 while(!stop){
+	    			 mHandler.sendMessage(mHandler.obtainMessage());	
+		    			try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+	    		  }
+	    	}
+	    };uiThread.start();
+	    
+	    mHandler = new Handler() {
+			@Override
+	    	public void handleMessage(Message msg) {
+	    		super.handleMessage(msg);
+	    		initialize();
+	    	}
+	    };
 		return view;
 	}
 }

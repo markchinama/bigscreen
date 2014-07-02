@@ -287,8 +287,39 @@ public class DataHandler1 {
 		dw2.youmenmonixihao = f2;
 	}
 
-	public static void setDw1(int[] i, float f1, float f2) {
+	public static void setDw1(int i[], float f1, float f2) {
 
+		/*System.out.print(i[0]);
+		System.out.print(i[1]);
+		System.out.print(i[2]);
+		System.out.print(i[3]);
+		System.out.print(i[4]);
+		System.out.print(i[5]);
+		System.out.print(i[6]);
+		System.out.print(i[7]);
+		System.out.print(i[8]);
+		System.out.print(i[9]);
+		System.out.print(i[10]);
+		System.out.print(i[11]);
+		System.out.print(i[12]);
+		System.out.print(i[13]);
+		System.out.print(i[14]);
+		System.out.print(i[15]);
+		System.out.print(i[16]);
+		System.out.print(i[17]);
+		System.out.print(i[18]);
+		System.out.print(i[19]);
+		System.out.print(i[20]);
+		System.out.print(i[21]);
+		System.out.print(i[22]);
+		System.out.print(i[23]);
+		System.out.print(i[24]);
+		System.out.print(i[25]);
+		System.out.print(i[26]);
+		System.out.print(i[27]);		
+		System.out.print(f1);
+		System.out.print(f2);
+		*/
 		dw1.gaoyaqiaobanbihexinhao = i[0];
 		dw1.yaoshistxinhao = i[1];
 		dw1.yaoshionxinhao = i[2];
@@ -317,6 +348,7 @@ public class DataHandler1 {
 		dw1.shuiweidixinhao = i[25];
 		dw1.kongtiaoqidongxinhao = i[26];
 		dw1.dianzhidongyouxiaoxinhao = i[27];
+		
 		dw1.zhengcheqiya = f1;
 		dw1.dianjiniuju = f2;
 	}

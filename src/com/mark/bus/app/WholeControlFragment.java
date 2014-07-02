@@ -3,6 +3,8 @@ package com.mark.bus.app;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -47,14 +49,16 @@ public class WholeControlFragment extends Fragment {
 	private ImageView iv_kongtiaogongzuoshineng;
 	private ImageView iv_kongtiaogonglvshuaijianshineng;
 	private ImageView iv_shuibengqidong;
-
+	
+	Handler mHandler;	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		view = inflater.inflate(R.layout.whole_control_fragment, container,
 				false);
-		initialize();
+		
 		OnTouchListener mTouchListener = new OnTouchListener() {
 
 			@Override
@@ -90,6 +94,29 @@ public class WholeControlFragment extends Fragment {
 		};
 
 		view.setOnTouchListener(mTouchListener);
+		//initialize();
+		new Thread(){
+	    	@Override
+	    	public void run(){
+	    		 while(true){
+	    			 mHandler.sendMessage(mHandler.obtainMessage());	
+		    			try {
+							Thread.sleep(500);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+	    		  }
+	    	}
+	    }.start();
+	    
+	    mHandler = new Handler() {
+			@Override
+	    	public void handleMessage(Message msg) {
+	    		super.handleMessage(msg);
+	    		initialize();
+	    	}
+	    };
 		return view;
 	}
 

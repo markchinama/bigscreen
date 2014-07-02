@@ -2,6 +2,8 @@ package com.mark.bus.app;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,8 +52,26 @@ public class FireAlarmFragment extends Fragment {
 	private TextView iv_communacation6;
 	private TextView iv_communacation7;
 	private TextView iv_communacation8;
+	private TextView firealarm_refertext;
 	private int[] status = new int[8];
-	private int[] mods = { 128, 64, 32, 16, 8, 4, 2 ,1};
+	private int[] mods = { 128, 64, 32, 16, 8, 4, 2, 1 };
+
+	private CharSequence yanwujinjiguzhang;
+	private CharSequence duseguzhang;
+	private CharSequence tongxunguzhang;
+	private CharSequence zhengchang;
+	private CharSequence zijian;
+	private CharSequence qitiduseguzhang;
+	private CharSequence shebeiguzhang;
+	private boolean isStop = false;
+	static Handler mHandler;
+
+	@Override
+	public void onPause() {
+
+		isStop = true;
+		super.onPause();
+	}
 
 	public void initialize() {
 		iv_status1 = (TextView) view.findViewById(R.id.status1);
@@ -95,6 +115,7 @@ public class FireAlarmFragment extends Fragment {
 		TextView[] viewcommunication = { iv_communacation1, iv_communacation2,
 				iv_communacation3, iv_communacation4, iv_communacation5,
 				iv_communacation6, iv_communacation7, iv_communacation8 };
+		firealarm_refertext =  (TextView) view.findViewById(R.id.firealarm_refertext);
 		for (int i = 0; i < 8; i++) {
 			status[i] = 0;
 		}
@@ -104,35 +125,94 @@ public class FireAlarmFragment extends Fragment {
 		int sbi = dfa.sbi;
 		int sci = dfa.sci;
 		for (int i = 0; i < 8; i++) {
+			
 			if ((sai & mods[i]) != 0) {
 				status[i] = 1;
-				viewissue[i].setText((CharSequence) this.getResources()
-						.getString(R.string.yanwujinjiguzhang));
+				viewissue[i].setText(yanwujinjiguzhang);
+			}else{
+				status[i] = 0;
+				viewissue[i].setText("");
+				
 			}
 			if ((sbi & mods[i]) != 0) {
 				status[i] = 1;
-				viewblock[i].setText((CharSequence) this.getResources()
-						.getString(R.string.duseguzhang));
+				viewblock[i].setText(duseguzhang);
+			}else{
+				status[i] = 0;
+				viewblock[i].setText("");
+				
 			}
 			if ((sci & mods[i]) != 0) {
 				status[i] = 1;
-				viewcommunication[i].setText((CharSequence) this.getResources()
-						.getString(R.string.tongxunguzhang));
+				viewcommunication[i].setText(tongxunguzhang);
+			}else{
+				status[i] = 0;
+				viewcommunication[i].setText("");
+				
 			}
-			if (status[i] == 0) {
-				viewstatus[i].setText((CharSequence) this.getResources()
-						.getString(R.string.zhengchang));
+			if ((sai & mods[i]) == 0  &&(sbi & mods[i]) == 0 &&(sci & mods[i]) == 0) {
+				viewstatus[i].setText(zhengchang);
+			}else{
+				viewstatus[i].setText("");
 			}
 		}
-
+		
+		
+		if(dfa.yanwubaojingqizhuangtai == 1)
+			firealarm_refertext.setText(zijian);
+		if(dfa.yanwubaojingqizhuangtai == 2)
+			firealarm_refertext.setText(zhengchang);
+		if(dfa.yanwubaojingqizhuangtai == 4)
+			firealarm_refertext.setText(tongxunguzhang);
+		if(dfa.yanwubaojingqizhuangtai == 5)
+			firealarm_refertext.setText(qitiduseguzhang);
+		if(dfa.yanwubaojingqizhuangtai == 6)
+			firealarm_refertext.setText(yanwujinjiguzhang);
+		if(dfa.yanwubaojingqizhuangtai == 7)
+			firealarm_refertext.setText(shebeiguzhang);
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		zijian = (CharSequence) this.getResources().getString(R.string.zijian);
+		yanwujinjiguzhang = (CharSequence) this.getResources().getString(
+				R.string.yanwujinjiguzhang);
+		duseguzhang = (CharSequence) this.getResources().getString(
+				R.string.duseguzhang);
+		tongxunguzhang = (CharSequence) this.getResources().getString(
+				R.string.tongxunguzhang);
+		zhengchang = (CharSequence) this.getResources().getString(
+				R.string.zhengchang);
+		qitiduseguzhang = (CharSequence) this.getResources().getString(
+				R.string.qitiduseguzhang);
+		shebeiguzhang = (CharSequence) this.getResources().getString(
+				R.string.shebeiguzhang);
 
 		view = inflater.inflate(R.layout.fire_alarm_fragment, container, false);
-		initialize();
+		// initialize();
+		new Thread() {
+			@Override
+			public void run() {
+				while (!isStop) {
+					mHandler.sendEmptyMessage(0);
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
+
+		mHandler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				initialize();
+			}
+		};
 		return view;
 	}
 }

@@ -2,7 +2,7 @@ package com.mark.bus.app;
 
 import java.util.Map;
 
-import com.mark.bus.app.MainActivity.AnimationHandler;
+import com.mark.bus.app.MainActivity.ACModeHandler;
 import com.mark.bus.app.MainActivity.CrashHandler;
 import com.mark.bus.app.MainActivity.ModelHandler;
 import com.mark.bus.data.DataFromWholeController1;
@@ -13,17 +13,16 @@ public class BusApplication extends Application {
 
 	private DataFromWholeController1 dw1 = new DataFromWholeController1();
 	private ModelHandler modelhandler = null;
-	private AnimationHandler animhandler = null;
-
-	public AnimationHandler getAnimhandler() {
-		return animhandler;
-	}
-
-	public void setAnimhandler(AnimationHandler animhandler) {
-		this.animhandler = animhandler;
-	}
-
+    private ACModeHandler acModeHandler = null;
 	private CrashHandler crashHandler = null;
+
+	public ACModeHandler getAcModleHandler() {
+		return acModeHandler;
+	}
+
+	public void setAcModleHandler(ACModeHandler acModeHandler) {
+		this.acModeHandler = acModeHandler;
+	}
 
 	public CrashHandler getCrashHandler() {
 		return crashHandler;

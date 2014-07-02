@@ -2,6 +2,7 @@ package com.mark.bus.app;
 
 import com.mark.bus.R;
 import com.mark.bus.app.MainActivity.ModelHandler;
+import com.mark.bus.data.DataHandler;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -20,9 +21,11 @@ public class ACModelActivity extends Activity {
 
 	public boolean onTouchEvent(MotionEvent event) {
 
-	
-		if (event.getX() >100 && event.getX()<200 &&event.getY()>160) {
-			
+		System.out.println("X="+event.getX());
+		System.out.println("Y="+event.getY());
+		System.out.println("#################################");
+		if (event.getX() > 90 && event.getX() < 240 && event.getY() > 160) {
+
 			finish();
 			return true;
 		}
@@ -64,10 +67,13 @@ public class ACModelActivity extends Activity {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				int seekProgress = seekBar.getProgress();
-				if (seekProgress < 50)
+				if (seekProgress < 50) {
 					seekBar.setProgress(8);
-				else
+					DataHandler.ac2bus.kongtiaosongfengmoshi = 0x5;
+				} else {
 					seekBar.setProgress(93);
+					DataHandler.ac2bus.kongtiaosongfengmoshi = 0xA;
+				}
 			}
 
 		});
@@ -90,15 +96,41 @@ public class ACModelActivity extends Activity {
 			public void onStopTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
 				int seekProgress = seekBar.getProgress();
-				if (seekProgress <= 30)
+				if (seekProgress <= 30) {
+					DataHandler.ac2bus.kongtiaogongzuomoshi = 0xA;
 					seekBar.setProgress(8);
-				else if (seekProgress > 75)
+					((BusApplication) ACModelActivity.this.getApplication())
+							.getAcModleHandler().sendEmptyMessage(0);
+				} else if (seekProgress > 75) {
+					DataHandler.ac2bus.kongtiaogongzuomoshi = 0x5;
 					seekBar.setProgress(93);
-				else
+					((BusApplication) ACModelActivity.this.getApplication())
+							.getAcModleHandler().sendEmptyMessage(2);
+
+				} else {
 					seekBar.setProgress(50);
+					DataHandler.ac2bus.kongtiaogongzuomoshi = 0x0;
+					((BusApplication) ACModelActivity.this.getApplication())
+							.getAcModleHandler().sendEmptyMessage(1);
+				}
 			}
 
 		});
+		initialize();
 	}
 
+	public void initialize() {
+		if (DataHandler.ac2bus.kongtiaogongzuomoshi == 0xA) {
+			modeSeekBar.setProgress(8);
+		} else if (DataHandler.ac2bus.kongtiaogongzuomoshi == 0x5) {
+			modeSeekBar.setProgress(93);
+		} else {
+			modeSeekBar.setProgress(50);
+		}
+
+		if (DataHandler.ac2bus.kongtiaosongfengmoshi == 0x5)
+			loopSeekBar.setProgress(8);
+		else
+			loopSeekBar.setProgress(93);
+	}
 }

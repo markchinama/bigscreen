@@ -7,9 +7,7 @@ public class DataHandler {
 	}
 	public static ACData2Bus ac2bus = new ACData2Bus();
 
-	public int getInt(int a) {
-		return plus(a);
-	}
+
 
 	public void setDw1(int i) {
 	}
@@ -17,7 +15,6 @@ public class DataHandler {
 	public static void setButtonsStatus(int[] i) {
 		setButtons(i);
 	}
-
 	public static void setACData() {
 		setAC(ac2bus.fengsudangwei, ac2bus.shedingwendu,
 				ac2bus.kongtiaosongfengmoshi, ac2bus.kongtiaogongzuomoshi,
@@ -25,9 +22,8 @@ public class DataHandler {
 
 	}
 
-	public native int plus(int i);
 
-	public static native void setAC(int a ,int b,int c,int d,int e,int f);
+	public static native void setAC(int a ,int b,int c,int d,float  e,int f);
 
 	public static native void setButtons(int[] i);
 

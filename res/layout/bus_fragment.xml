@@ -9,7 +9,7 @@
         android:id="@+id/anim_electric_mechine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40px"
+        android:layout_marginLeft="107px"
         android:layout_marginTop="170px" />
 
     <ImageView
