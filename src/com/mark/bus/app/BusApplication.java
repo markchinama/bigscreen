@@ -32,13 +32,19 @@ public class BusApplication extends Application {
 		this.crashHandler = crashHandler;
 	}
 
-	private int[] buttonStatus = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-	private int[] dataStatus = { 0, 0, 0, 0, 0, 0, 0, 0 };
+	private int[] buttonStatus = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };//buttons of ButtonsFragment
+	private int[] dataStatus = { 0, 0, 0, 0, 0, 0, 0, 0 };//buttons of DataSettingActivity
 
+	public int[] getButtonStatus() {
+		return buttonStatus;
+	}
+	public void setButtonStatus(int[] buttonStatus) {
+		this.buttonStatus = buttonStatus;
+	}
+	
 	public int[] getDataStatus() {
 		return dataStatus;
 	}
-
 	public void setDataStatus(int[] dataStatus) {
 		this.dataStatus = dataStatus;
 	}
@@ -60,14 +66,6 @@ public class BusApplication extends Application {
 
 	public void setCrashStatus(int crashStatus) {
 		this.crashStatus = crashStatus;
-	}
-
-	public int[] getButtonStatus() {
-		return buttonStatus;
-	}
-
-	public void setButtonStatus(int[] buttonStatus) {
-		this.buttonStatus = buttonStatus;
 	}
 
 	// set方法

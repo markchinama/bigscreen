@@ -2,6 +2,7 @@ package com.mark.bus.app;
 
 import com.mark.bus.R;
 import com.mark.bus.app.MainActivity.ModelHandler;
+import com.mark.bus.data.DataHandler;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -80,6 +81,7 @@ public class ModelActivity extends Activity {
 				ba = (BusApplication) getApplication();
 				mHandler = ba.getHandler();
 				mHandler.sendEmptyMessage(btnId);
+				DataHandler.workMode2Bus.mode=btnId;
 				try {
 					Thread.sleep(200);
 				} catch (InterruptedException e) {

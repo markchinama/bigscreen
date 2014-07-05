@@ -112,7 +112,7 @@ public class ElectricMechineControlFragment extends Fragment {
 	    	@Override
 	    	public void run(){
 	    		 while(!isStop){
-	    			 mHandler.sendMessage(mHandler.obtainMessage());	
+	    			 mHandler.sendEmptyMessage(0);	
 		    			try {
 							Thread.sleep(500);
 						} catch (InterruptedException e) {

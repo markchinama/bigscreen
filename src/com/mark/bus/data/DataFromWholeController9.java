@@ -15,4 +15,7 @@ public class DataFromWholeController9 {
 	public int shoudaoqiaobankaiguanbihexinhao;
 	public int keyonxinhao;
 	public int shengyuchongdianshijian;
+	public int jiashidefen;
+	public int pingjundianhao;
+
 }

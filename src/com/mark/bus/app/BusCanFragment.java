@@ -49,7 +49,12 @@ public class BusCanFragment extends Fragment {
 	private ImageView iv_lupaidianyuan;
 	private boolean isStop = false;
 	UIHandler mHandler = new UIHandler();
-
+	
+	private final class UIHandler extends Handler {
+		public void handleMessage(Message msg) {
+			initialize();
+		}
+	}
 	@Override
 	public void onPause() {
 
@@ -90,6 +95,10 @@ public class BusCanFragment extends Fragment {
 			iv_zhidongdeng.setBackgroundResource(R.drawable.offstatus);
 		else
 			iv_zhidongdeng.setBackgroundResource(R.drawable.onstatus);
+		if (dbcm.qianwudeng == 0)
+			iv_qianwudeng.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_qianwudeng.setBackgroundResource(R.drawable.onstatus);
 		if (dbcm.zhongmentabudeng == 0)
 			iv_zhongmentabudeng.setBackgroundResource(R.drawable.offstatus);
 		else
@@ -108,11 +117,14 @@ public class BusCanFragment extends Fragment {
 		else
 			iv_weishengjianyourenzhishideng
 					.setBackgroundResource(R.drawable.onstatus);
-
-		if (dbcm.dianshijidianyuan == 0)
-			iv_dianshijidianyuan.setBackgroundResource(R.drawable.offstatus);
+		if (dbcm.gaoyacangzhaomingdeng == 0)
+			iv_gaoyacangdeng.setBackgroundResource(R.drawable.offstatus);
 		else
-			iv_dianshijidianyuan.setBackgroundResource(R.drawable.onstatus);
+			iv_gaoyacangdeng.setBackgroundResource(R.drawable.onstatus);
+		if (dbcm.qianmenkaimendiancifa == 0)
+			iv_qianmenkaidiancifa.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_qianmenkaidiancifa.setBackgroundResource(R.drawable.onstatus);
 		if (dbcm.dianshijidianyuan == 0)
 			iv_dianshijidianyuan.setBackgroundResource(R.drawable.offstatus);
 		else
@@ -121,6 +133,10 @@ public class BusCanFragment extends Fragment {
 			iv_qidongjidianqi.setBackgroundResource(R.drawable.offstatus);
 		else
 			iv_qidongjidianqi.setBackgroundResource(R.drawable.onstatus);
+		if (dbcm.qianmenguanmendiancifa == 0)
+			iv_qianmenguandiancifa.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_qianmenguandiancifa.setBackgroundResource(R.drawable.onstatus);
 		if (dbcm.zhongmenguanmendiancifa == 0)
 			iv_zhongmenguanmendiancifa
 					.setBackgroundResource(R.drawable.offstatus);
@@ -145,7 +161,18 @@ public class BusCanFragment extends Fragment {
 		else
 			iv_zhongmenkaimendiancifa
 					.setBackgroundResource(R.drawable.onstatus);
-
+		if (dbcm.nuanshuidiancifa == 0)
+			iv_nuanshuidiancifa.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_nuanshuidiancifa.setBackgroundResource(R.drawable.onstatus);
+		if (dbcm.labazhuanhuankaiguan == 0)
+			iv_qilaba.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_qilaba.setBackgroundResource(R.drawable.onstatus);
+		if (dbcm.dianzilupaikaiguan == 0)
+			iv_lupaideng.setBackgroundResource(R.drawable.offstatus);
+		else
+			iv_lupaideng.setBackgroundResource(R.drawable.onstatus);
 	}
 
 	@Override
@@ -252,9 +279,4 @@ public class BusCanFragment extends Fragment {
 
 	}
 
-	private final class UIHandler extends Handler {
-		public void handleMessage(Message msg) {
-			initialize();
-		}
-	}
 }

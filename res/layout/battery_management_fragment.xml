@@ -18,14 +18,6 @@
             android:textColor="#ffffff"
             android:textSize="25dp"
             android:textStyle="bold" />
-
-        <ImageButton
-            android:id="@+id/collapse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="480dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/batterytopbtnopen" />
     </LinearLayout>
 
     <LinearLayout
@@ -464,13 +456,14 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/battery01bg"
+                android:background="@drawable/batterytopbg"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="@string/mokuai1"
                     android:textColor="#ffffff"
                     android:textSize="25dp"
@@ -479,11 +472,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="13dp"
                     android:background="@drawable/highicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m2_high_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -498,6 +492,7 @@
                     android:background="@drawable/lowicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m2_low_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -512,6 +507,7 @@
                     android:background="@drawable/batteryicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m2_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -528,13 +524,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n1th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b1"
+                        android:id="@+id/bmf_m1b1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -544,13 +540,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n12th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b12"
+                        android:id="@+id/bmf_m1b12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -560,13 +556,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n23th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b23"
+                        android:id="@+id/bmf_m1b23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -579,13 +575,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n2th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b2"
+                        android:id="@+id/bmf_m1b2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -595,13 +591,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n13th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b13"
+                        android:id="@+id/bmf_m1b13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -611,13 +607,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n24th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b24"
+                        android:id="@+id/bmf_m1b24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -630,13 +626,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n3th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b3"
+                        android:id="@+id/bmf_m1b3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -646,13 +642,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n14th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b14"
+                        android:id="@+id/bmf_m1b14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -662,13 +658,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n25th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b25"
+                        android:id="@+id/bmf_m1b25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -681,13 +677,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n4th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b4"
+                        android:id="@+id/bmf_m1b4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -697,13 +693,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n15th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b15"
+                        android:id="@+id/bmf_m1b15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -713,13 +709,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n26th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b26"
+                        android:id="@+id/bmf_m1b26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -732,13 +728,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n5th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b5"
+                        android:id="@+id/bmf_m1b5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -748,13 +744,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n16th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b16"
+                        android:id="@+id/bmf_m1b16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -764,13 +760,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n27th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b27"
+                        android:id="@+id/bmf_m1b27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -783,13 +779,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n6th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b6"
+                        android:id="@+id/bmf_m1b6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -799,13 +795,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n17th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b17"
+                        android:id="@+id/bmf_m1b17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -815,13 +811,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n28th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b28"
+                        android:id="@+id/bmf_m1b28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -834,13 +830,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n7th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b7"
+                        android:id="@+id/bmf_m1b7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -850,13 +846,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n18th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b18"
+                        android:id="@+id/bmf_m1b18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -866,13 +862,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n29th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b29"
+                        android:id="@+id/bmf_m1b29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -885,13 +881,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n8th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b8"
+                        android:id="@+id/bmf_m1b8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -901,13 +897,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n19th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b19"
+                        android:id="@+id/bmf_m1b19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -917,13 +913,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n30th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b30"
+                        android:id="@+id/bmf_m1b30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -936,13 +932,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n9th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b9"
+                        android:id="@+id/bmf_m1b9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -952,13 +948,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n20th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b20"
+                        android:id="@+id/bmf_m1b20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -968,13 +964,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n31th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b31"
+                        android:id="@+id/bmf_m1b31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -987,13 +983,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n10th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b10"
+                        android:id="@+id/bmf_m1b10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1003,13 +999,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n21th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b21"
+                        android:id="@+id/bmf_m1b21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1019,13 +1015,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n32th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b32"
+                        android:id="@+id/bmf_m1b32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1038,13 +1034,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n11th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b11"
+                        android:id="@+id/bmf_m1b11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1054,13 +1050,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n22th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m1b22"
+                        android:id="@+id/bmf_m1b22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1073,19 +1069,20 @@
         <LinearLayout
             android:layout_width="310dp"
             android:layout_height="fill_parent"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp" >
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical" >
 
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/battery02bg"
+                android:background="@drawable/batterytopbg"
                 android:orientation="horizontal" >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="60dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="@string/mokuai2"
                     android:textColor="#ffffff"
                     android:textSize="25dp"
@@ -1094,11 +1091,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginTop="13dp"
                     android:background="@drawable/highicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m1_high_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -1113,6 +1111,7 @@
                     android:background="@drawable/lowicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m1_low_temperature"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -1127,6 +1126,7 @@
                     android:background="@drawable/batteryicon" />
 
                 <TextView
+                    android:id="@+id/bmf_m1_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -1143,13 +1143,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n1th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b1"
+                        android:id="@+id/bmf_m2b1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1159,13 +1159,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n12th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b12"
+                        android:id="@+id/bmf_m2b12"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1175,13 +1175,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n23th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b23"
+                        android:id="@+id/bmf_m2b23"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1194,13 +1194,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n2th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b2"
+                        android:id="@+id/bmf_m2b2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1210,13 +1210,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n13th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b13"
+                        android:id="@+id/bmf_m2b13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1226,13 +1226,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n24th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b24"
+                        android:id="@+id/bmf_m2b24"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1245,13 +1245,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n3th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b3"
+                        android:id="@+id/bmf_m2b3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1261,13 +1261,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n14th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b14"
+                        android:id="@+id/bmf_m2b14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1277,13 +1277,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n25th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b25"
+                        android:id="@+id/bmf_m2b25"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1296,13 +1296,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n4th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b4"
+                        android:id="@+id/bmf_m2b4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1312,13 +1312,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n15th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b15"
+                        android:id="@+id/bmf_m2b15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1328,13 +1328,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n26th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b26"
+                        android:id="@+id/bmf_m2b26"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1347,13 +1347,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n5th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b5"
+                        android:id="@+id/bmf_m2b5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1363,13 +1363,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n16th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b16"
+                        android:id="@+id/bmf_m2b16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1379,13 +1379,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n27th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b27"
+                        android:id="@+id/bmf_m2b27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1398,13 +1398,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n6th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b6"
+                        android:id="@+id/bmf_m2b6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1414,13 +1414,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n17th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b17"
+                        android:id="@+id/bmf_m2b17"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1430,13 +1430,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n28th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b28"
+                        android:id="@+id/bmf_m2b28"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1449,13 +1449,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n7th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b7"
+                        android:id="@+id/bmf_m2b7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1465,13 +1465,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n18th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b18"
+                        android:id="@+id/bmf_m2b18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1481,13 +1481,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n29th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b29"
+                        android:id="@+id/bmf_m2b29"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1500,13 +1500,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n8th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b8"
+                        android:id="@+id/bmf_m2b8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1516,13 +1516,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n19th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b19"
+                        android:id="@+id/bmf_m2b19"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1532,13 +1532,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n30th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b30"
+                        android:id="@+id/bmf_m2b30"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1551,13 +1551,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n9th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b9"
+                        android:id="@+id/bmf_m2b9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1567,13 +1567,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n20th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b20"
+                        android:id="@+id/bmf_m2b20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1583,13 +1583,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n31th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b31"
+                        android:id="@+id/bmf_m2b31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1602,13 +1602,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n10th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b10"
+                        android:id="@+id/bmf_m2b10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1618,13 +1618,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n21th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b21"
+                        android:id="@+id/bmf_m2b21"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1634,13 +1634,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n32th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b32"
+                        android:id="@+id/bmf_m2b32"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1653,13 +1653,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n11th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b11"
+                        android:id="@+id/bmf_m2b11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
@@ -1669,13 +1669,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="50dp"
+                        android:layout_marginLeft="20dp"
                         android:text="@string/n22th"
                         android:textColor="#5e3a14"
                         android:textSize="10dp" />
 
                     <TextView
-                        android:id="@+id/m2b22"
+                        android:id="@+id/bmf_m2b22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"

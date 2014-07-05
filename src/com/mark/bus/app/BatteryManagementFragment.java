@@ -1,5 +1,7 @@
 package com.mark.bus.app;
 
+import java.text.DecimalFormat;
+
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,18 +24,11 @@ import com.mark.bus.data.DataHandler1;
 
 public class BatteryManagementFragment extends Fragment {
 
-	@Override
-	public void onPause() {
-
-		stop=true;
-		super.onPause();
-	}
-
-	private CharSequence jinzhichongdian ;
-	private CharSequence yunxuchongdian ;
-	private CharSequence yilianjie ;
+	private CharSequence jinzhichongdian;
+	private CharSequence yunxuchongdian;
+	private CharSequence yilianjie;
 	private CharSequence weilianjie;
-	
+
 	private boolean stop = false;
 	private boolean flag = true;
 	private TableRow tab11;
@@ -75,8 +70,97 @@ public class BatteryManagementFragment extends Fragment {
 	private TextView tv_zuididianyadianchixiangjieshu;
 	private TextView tv_chongdianzhuanglianjiebiaozhiwei;
 	private TextView tv_jinzhichongdianbiaozhi;
-	Handler mHandler;	
-	Thread uiThread ;
+
+	private TextView bmf_m1_count;
+	private TextView bmf_m2_count;
+	
+	private TextView bmf_m1_high_temperature;
+	private TextView bmf_m2_high_temperature;
+	
+	private TextView bmf_m1_low_temperature;
+	private TextView bmf_m2_low_temperature;
+	
+	private TextView bmf_m1b1;
+	private TextView bmf_m1b2;
+	private TextView bmf_m1b3;
+	private TextView bmf_m1b4;
+	private TextView bmf_m1b5;
+	private TextView bmf_m1b6;
+	private TextView bmf_m1b7;
+	private TextView bmf_m1b8;
+	private TextView bmf_m1b9;
+	private TextView bmf_m1b10;
+	private TextView bmf_m1b11;
+	private TextView bmf_m1b12;
+	private TextView bmf_m1b13;
+	private TextView bmf_m1b14;
+	private TextView bmf_m1b15;
+	private TextView bmf_m1b16;
+	private TextView bmf_m1b17;
+	private TextView bmf_m1b18;
+	private TextView bmf_m1b19;
+	private TextView bmf_m1b20;
+	private TextView bmf_m1b21;
+	private TextView bmf_m1b22;
+	private TextView bmf_m1b23;
+	private TextView bmf_m1b24;
+	private TextView bmf_m1b25;
+	private TextView bmf_m1b26;
+	private TextView bmf_m1b27;
+	private TextView bmf_m1b28;
+	private TextView bmf_m1b29;
+	private TextView bmf_m1b30;
+	private TextView bmf_m1b31;
+	private TextView bmf_m1b32;
+
+	private TextView bmf_m2b1;
+	private TextView bmf_m2b2;
+	private TextView bmf_m2b3;
+	private TextView bmf_m2b4;
+	private TextView bmf_m2b5;
+	private TextView bmf_m2b6;
+	private TextView bmf_m2b7;
+	private TextView bmf_m2b8;
+	private TextView bmf_m2b9;
+	private TextView bmf_m2b10;
+	private TextView bmf_m2b11;
+	private TextView bmf_m2b12;
+	private TextView bmf_m2b13;
+	private TextView bmf_m2b14;
+	private TextView bmf_m2b15;
+	private TextView bmf_m2b16;
+	private TextView bmf_m2b17;
+	private TextView bmf_m2b18;
+	private TextView bmf_m2b19;
+	private TextView bmf_m2b20;
+	private TextView bmf_m2b21;
+	private TextView bmf_m2b22;
+	private TextView bmf_m2b23;
+	private TextView bmf_m2b24;
+	private TextView bmf_m2b25;
+	private TextView bmf_m2b26;
+	private TextView bmf_m2b27;
+	private TextView bmf_m2b28;
+	private TextView bmf_m2b29;
+	private TextView bmf_m2b30;
+	private TextView bmf_m2b31;
+	private TextView bmf_m2b32;
+	private boolean isStop = false;
+	UIHandler mHandler = new UIHandler();
+
+	private final class UIHandler extends Handler {
+		public void handleMessage(Message msg) {
+			initialize();
+		}
+	}
+
+	@Override
+	public void onPause() {
+
+		isStop = true;
+		super.onPause();
+	}
+
 	public void initialize() {
 		DataFromBMS1 db1 = DataHandler1.db1;
 		DataFromBMS2 db2 = DataHandler1.db2;
@@ -87,8 +171,7 @@ public class BatteryManagementFragment extends Fragment {
 				.toString(db1.dianchixitongshishizongdianya));
 
 		tv_dianchisoc = (TextView) view.findViewById(R.id.bmf_dianchisoc);
-		tv_dianchizongdianya.setText((CharSequence) Float
-				.toString(db1.dianchisoc));
+		tv_dianchisoc.setText((CharSequence) Float.toString(db1.dianchisoc));
 
 		tv_dianchizongxiangshu = (TextView) view
 				.findViewById(R.id.bmf_dianchizongxiangshu);
@@ -111,9 +194,14 @@ public class BatteryManagementFragment extends Fragment {
 		// ////////////////////////////////////////////////
 		tv_mokuaizuigaowendu = (TextView) view
 				.findViewById(R.id.bmf_mokuaizuigaowendu);
+		tv_mokuaizuigaowendu.setText((CharSequence) Float
+				.toString(db2.dianchimokuaizuigaowendu));
 
 		tv_mokuaizuidiwendu = (TextView) view
 				.findViewById(R.id.bmf_mokuaizuidiwendu);
+		tv_mokuaizuidiwendu.setText((CharSequence) Float
+				.toString(db2.dianchimokuaizuigaowendu
+						- db2.dianchimokuaiwendujicha));
 		// /////////////////////////////////////////////////
 		tv_zuigaowendudianchiweizhi = (TextView) view
 				.findViewById(R.id.bmf_zuigaoweidudianchiweizhi);
@@ -172,6 +260,67 @@ public class BatteryManagementFragment extends Fragment {
 		} else {
 			tv_chongdianzhuanglianjiebiaozhiwei.setText(weilianjie);
 		}
+		bmf_m1_high_temperature
+		.setText(new Integer(
+				DataHandler1.dfcb.batteryModuleHighTemperature[0])
+				.toString()
+				+ "℃");
+		bmf_m1_low_temperature
+		.setText(new Integer(
+				DataHandler1.dfcb.batteryModuleLowTemperature[0])
+				.toString()
+				+ "℃");
+		bmf_m2_high_temperature
+		.setText(new Integer(
+				DataHandler1.dfcb.batteryModuleHighTemperature[1])
+				.toString()
+				+ "℃");
+		bmf_m2_low_temperature
+		.setText(new Integer(
+				DataHandler1.dfcb.batteryModuleLowTemperature[1])
+				.toString()
+				+ "℃");
+		bmf_m1_count.setText(new Integer(
+				DataHandler1.dfcb.batteryMonomerNumbers[0])
+				.toString()
+				+ "支");
+		bmf_m2_count.setText(new Integer(
+				DataHandler1.dfcb.batteryMonomerNumbers[ 1])
+				.toString()
+				+ "支");
+		
+		TextView[] texts = { bmf_m1b1, bmf_m1b2, bmf_m1b3, bmf_m1b4, bmf_m1b5,
+				bmf_m1b6, bmf_m1b7, bmf_m1b8, bmf_m1b9, bmf_m1b10, bmf_m1b11,
+				bmf_m1b12, bmf_m1b13, bmf_m1b14, bmf_m1b15, bmf_m1b16,
+				bmf_m1b17, bmf_m1b18, bmf_m1b19, bmf_m1b20, bmf_m1b21,
+				bmf_m1b22, bmf_m1b23, bmf_m1b24, bmf_m1b25, bmf_m1b26,
+				bmf_m1b27, bmf_m1b28, bmf_m1b29, bmf_m1b30, bmf_m1b31,
+				bmf_m1b32, bmf_m2b1, bmf_m2b2, bmf_m2b3, bmf_m2b4, bmf_m2b5,
+				bmf_m2b6, bmf_m2b7, bmf_m2b8, bmf_m2b9, bmf_m2b10, bmf_m2b11,
+				bmf_m2b12, bmf_m2b13, bmf_m2b14, bmf_m2b15, bmf_m2b16,
+				bmf_m2b17, bmf_m2b18, bmf_m2b19, bmf_m2b20, bmf_m2b21,
+				bmf_m2b22, bmf_m2b23, bmf_m2b24, bmf_m2b25, bmf_m2b26,
+				bmf_m2b27, bmf_m2b28, bmf_m2b29, bmf_m2b30, bmf_m2b31,
+				bmf_m2b32 };
+		DecimalFormat df = new DecimalFormat();
+		String style = "00.00 V";
+		df.applyPattern(style);
+		for (int i = 0; i < texts.length; i++) {
+			int beginIndex = 0;
+			int currentModule = (i / 32);
+
+			for (int j = 0; j < currentModule; j++) {
+				beginIndex += DataHandler1.dfcb.batteryMonomerNumbers[j];
+			}
+
+			if ((i % 32) > DataHandler1.dfcb.batteryMonomerNumbers[currentModule] - 1) {
+				texts[i].setText("00.00 V");
+			} else {
+				Float f = DataHandler1.dfcb.batteryMonomerVoltages[beginIndex
+						+ i % 32] / 1000f;
+				texts[i].setText(df.format(f));
+			}
+		}
 	}
 
 	@Override
@@ -179,11 +328,12 @@ public class BatteryManagementFragment extends Fragment {
 			Bundle savedInstanceState) {
 		view = inflater.inflate(R.layout.battery_management_fragment,
 				container, false);
-		 jinzhichongdian = this.getResources().getString(R.string.jinzhichongdian);
-yunxuchongdian = this.getResources().getString(R.string.yunxuchongdian);
+		jinzhichongdian = this.getResources().getString(
+				R.string.jinzhichongdian);
+		yunxuchongdian = this.getResources().getString(R.string.yunxuchongdian);
 		yilianjie = this.getResources().getString(R.string.yilianjie);
-		 weilianjie = this.getResources().getString(R.string.weilianjie);
-		
+		weilianjie = this.getResources().getString(R.string.weilianjie);
+
 		tab11 = (TableRow) view.findViewById(R.id.v11);
 		tab12 = (TableRow) view.findViewById(R.id.v12);
 		tab13 = (TableRow) view.findViewById(R.id.v13);
@@ -194,7 +344,83 @@ yunxuchongdian = this.getResources().getString(R.string.yunxuchongdian);
 		tab24 = (TableRow) view.findViewById(R.id.v24);
 		tab31 = (TableRow) view.findViewById(R.id.v31);
 		tab32 = (TableRow) view.findViewById(R.id.v32);
-        
+		
+		bmf_m1_count = (TextView) view.findViewById(R.id.bmf_m1_count);
+		bmf_m2_count = (TextView) view.findViewById(R.id.bmf_m2_count);
+		bmf_m1_high_temperature = (TextView) view
+				.findViewById(R.id.bmf_m1_high_temperature);
+		bmf_m2_high_temperature = (TextView) view
+				.findViewById(R.id.bmf_m2_high_temperature);
+		bmf_m1_low_temperature = (TextView) view
+				.findViewById(R.id.bmf_m1_low_temperature);
+		bmf_m2_low_temperature = (TextView) view
+				.findViewById(R.id.bmf_m2_low_temperature);
+
+		bmf_m1b1 = (TextView) view.findViewById(R.id.bmf_m1b1);
+		bmf_m1b2 = (TextView) view.findViewById(R.id.bmf_m1b2);
+		bmf_m1b3 = (TextView) view.findViewById(R.id.bmf_m1b3);
+		bmf_m1b4 = (TextView) view.findViewById(R.id.bmf_m1b4);
+		bmf_m1b5 = (TextView) view.findViewById(R.id.bmf_m1b5);
+		bmf_m1b6 = (TextView) view.findViewById(R.id.bmf_m1b6);
+		bmf_m1b7 = (TextView) view.findViewById(R.id.bmf_m1b7);
+		bmf_m1b8 = (TextView) view.findViewById(R.id.bmf_m1b8);
+		bmf_m1b9 = (TextView) view.findViewById(R.id.bmf_m1b9);
+		bmf_m1b10 = (TextView) view.findViewById(R.id.bmf_m1b10);
+		bmf_m1b11 = (TextView) view.findViewById(R.id.bmf_m1b11);
+		bmf_m1b12 = (TextView) view.findViewById(R.id.bmf_m1b12);
+		bmf_m1b13 = (TextView) view.findViewById(R.id.bmf_m1b13);
+		bmf_m1b14 = (TextView) view.findViewById(R.id.bmf_m1b14);
+		bmf_m1b15 = (TextView) view.findViewById(R.id.bmf_m1b15);
+		bmf_m1b16 = (TextView) view.findViewById(R.id.bmf_m1b16);
+		bmf_m1b17 = (TextView) view.findViewById(R.id.bmf_m1b17);
+		bmf_m1b18 = (TextView) view.findViewById(R.id.bmf_m1b18);
+		bmf_m1b19 = (TextView) view.findViewById(R.id.bmf_m1b19);
+		bmf_m1b20 = (TextView) view.findViewById(R.id.bmf_m1b20);
+		bmf_m1b21 = (TextView) view.findViewById(R.id.bmf_m1b21);
+		bmf_m1b22 = (TextView) view.findViewById(R.id.bmf_m1b22);
+		bmf_m1b23 = (TextView) view.findViewById(R.id.bmf_m1b23);
+		bmf_m1b24 = (TextView) view.findViewById(R.id.bmf_m1b24);
+		bmf_m1b25 = (TextView) view.findViewById(R.id.bmf_m1b25);
+		bmf_m1b26 = (TextView) view.findViewById(R.id.bmf_m1b26);
+		bmf_m1b27 = (TextView) view.findViewById(R.id.bmf_m1b27);
+		bmf_m1b28 = (TextView) view.findViewById(R.id.bmf_m1b28);
+		bmf_m1b29 = (TextView) view.findViewById(R.id.bmf_m1b29);
+		bmf_m1b30 = (TextView) view.findViewById(R.id.bmf_m1b30);
+		bmf_m1b31 = (TextView) view.findViewById(R.id.bmf_m1b31);
+		bmf_m1b32 = (TextView) view.findViewById(R.id.bmf_m1b32);
+
+		bmf_m2b1 = (TextView) view.findViewById(R.id.bmf_m2b1);
+		bmf_m2b2 = (TextView) view.findViewById(R.id.bmf_m2b2);
+		bmf_m2b3 = (TextView) view.findViewById(R.id.bmf_m2b3);
+		bmf_m2b4 = (TextView) view.findViewById(R.id.bmf_m2b4);
+		bmf_m2b5 = (TextView) view.findViewById(R.id.bmf_m2b5);
+		bmf_m2b6 = (TextView) view.findViewById(R.id.bmf_m2b6);
+		bmf_m2b7 = (TextView) view.findViewById(R.id.bmf_m2b7);
+		bmf_m2b8 = (TextView) view.findViewById(R.id.bmf_m2b8);
+		bmf_m2b9 = (TextView) view.findViewById(R.id.bmf_m2b9);
+		bmf_m2b10 = (TextView) view.findViewById(R.id.bmf_m2b10);
+		bmf_m2b11 = (TextView) view.findViewById(R.id.bmf_m2b11);
+		bmf_m2b12 = (TextView) view.findViewById(R.id.bmf_m2b12);
+		bmf_m2b13 = (TextView) view.findViewById(R.id.bmf_m2b13);
+		bmf_m2b14 = (TextView) view.findViewById(R.id.bmf_m2b14);
+		bmf_m2b15 = (TextView) view.findViewById(R.id.bmf_m2b15);
+		bmf_m2b16 = (TextView) view.findViewById(R.id.bmf_m2b16);
+		bmf_m2b17 = (TextView) view.findViewById(R.id.bmf_m2b17);
+		bmf_m2b18 = (TextView) view.findViewById(R.id.bmf_m2b18);
+		bmf_m2b19 = (TextView) view.findViewById(R.id.bmf_m2b19);
+		bmf_m2b20 = (TextView) view.findViewById(R.id.bmf_m2b20);
+		bmf_m2b21 = (TextView) view.findViewById(R.id.bmf_m2b21);
+		bmf_m2b22 = (TextView) view.findViewById(R.id.bmf_m2b22);
+		bmf_m2b23 = (TextView) view.findViewById(R.id.bmf_m2b23);
+		bmf_m2b24 = (TextView) view.findViewById(R.id.bmf_m2b24);
+		bmf_m2b25 = (TextView) view.findViewById(R.id.bmf_m2b25);
+		bmf_m2b26 = (TextView) view.findViewById(R.id.bmf_m2b26);
+		bmf_m2b27 = (TextView) view.findViewById(R.id.bmf_m2b27);
+		bmf_m2b28 = (TextView) view.findViewById(R.id.bmf_m2b28);
+		bmf_m2b29 = (TextView) view.findViewById(R.id.bmf_m2b29);
+		bmf_m2b30 = (TextView) view.findViewById(R.id.bmf_m2b30);
+		bmf_m2b31 = (TextView) view.findViewById(R.id.bmf_m2b31);
+		bmf_m2b32 = (TextView) view.findViewById(R.id.bmf_m2b32);
 
 		OnTouchListener mTouchListener = new OnTouchListener() {
 
@@ -231,29 +457,22 @@ yunxuchongdian = this.getResources().getString(R.string.yunxuchongdian);
 		};
 
 		view.setOnTouchListener(mTouchListener);
-		//initialize();
-		uiThread =new Thread(){
-	    	@Override
-	    	public void run(){
-	    		 while(!stop){
-	    			 mHandler.sendMessage(mHandler.obtainMessage());	
-		    			try {
-							Thread.sleep(500);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-	    		  }
-	    	}
-	    };uiThread.start();
-	    
-	    mHandler = new Handler() {
+		// initialize();
+		new Thread() {
 			@Override
-	    	public void handleMessage(Message msg) {
-	    		super.handleMessage(msg);
-	    		initialize();
-	    	}
-	    };
+			public void run() {
+				while (!isStop) {
+					mHandler.sendEmptyMessage(0);
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
+
 		return view;
 	}
 }

@@ -50,8 +50,20 @@ public class WholeControlFragment extends Fragment {
 	private ImageView iv_kongtiaogonglvshuaijianshineng;
 	private ImageView iv_shuibengqidong;
 	
-	Handler mHandler;	
+	private boolean isStop = false;
+	UIHandler mHandler = new UIHandler();
+	private final class UIHandler extends Handler {
+		public void handleMessage(Message msg) {
+			initialize();
+		}
+	}
 	
+	@Override
+	public void onPause() {
+
+		isStop = true;
+		super.onPause();
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -98,8 +110,8 @@ public class WholeControlFragment extends Fragment {
 		new Thread(){
 	    	@Override
 	    	public void run(){
-	    		 while(true){
-	    			 mHandler.sendMessage(mHandler.obtainMessage());	
+	    		 while(!isStop){
+	    			 mHandler.sendEmptyMessage(0);	
 		    			try {
 							Thread.sleep(500);
 						} catch (InterruptedException e) {
@@ -109,14 +121,7 @@ public class WholeControlFragment extends Fragment {
 	    		  }
 	    	}
 	    }.start();
-	    
-	    mHandler = new Handler() {
-			@Override
-	    	public void handleMessage(Message msg) {
-	    		super.handleMessage(msg);
-	    		initialize();
-	    	}
-	    };
+	        
 		return view;
 	}
 
@@ -125,8 +130,19 @@ public class WholeControlFragment extends Fragment {
 		DataFromWholeController1 dw1 = DataHandler1.dw1;
 		DataFromWholeController2 dw2 = DataHandler1.dw2;
 		tv_chesu = (TextView) view.findViewById(R.id.wc_chesu1);
-		tv_chesu.setText(Float.toString(dw3.shishichesu));
+		//tv_chesu.setText(Float.toString(dw3.shishichesu));
 
+		int index = new Float(dw3.shishichesu).toString().indexOf(".");
+		if (index == 1) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 3));
+		}
+		if (index == 2) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 4));
+		}
+		if (index == 3) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 3));
+		}
+		
 		tv_dangwei = (TextView) view.findViewById(R.id.wc_dangwei1);
 		if (dw1.daodangxinhao == 1)
 			tv_dangwei.setText("R");
@@ -136,11 +152,43 @@ public class WholeControlFragment extends Fragment {
 			tv_dangwei.setText("N");
 
 		tv_shache = (TextView) view.findViewById(R.id.wc_shache1);
-		tv_shache.setText(Float.toString(dw2.zhidongmonixihao));
+		//tv_shache.setText(Float.toString(dw2.zhidongmonixihao));
+		int index1 = new Float(dw2.zhidongmonixihao).toString()
+				.indexOf(".");
+		if (index1 == 1) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 3)
+					+ "%");
+		}
+		if (index1 == 2) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 4)
+					+ "%");
+		}
+		if (index1 == 3) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 3)
+					+ "%");
+		}
 
 		tv_youmen = (TextView) view.findViewById(R.id.wc_youmen1);
-		tv_youmen.setText(Float.toString(dw2.youmenmonixihao));
+		//tv_youmen.setText(Float.toString(dw2.youmenmonixihao));
 
+		int index2 = new Float(dw2.youmenmonixihao).toString()
+				.indexOf(".");
+		if (index2 == 1) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 3)
+					+ "%");
+		}
+		if (index2 == 2) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 4)
+					+ "%");
+		}
+		if (index2 == 3) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 3)
+					+ "%");
+		}
+		
+		
+		
+		
 		iv_dianzhidong = (ImageView) view.findViewById(R.id.wc_dianzhidong1);
 		if (dw1.dianzhidongyouxiaoxinhao == 1) {
 			iv_dianzhidong.setBackgroundResource(R.drawable.onstatus);

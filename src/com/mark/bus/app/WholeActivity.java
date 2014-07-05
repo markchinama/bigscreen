@@ -58,7 +58,22 @@ public class WholeActivity extends FragmentActivity {
 	private TextView tv_bencixingshilicheng;
 	private TextView tv_kexingshilicheng;
 	private TextView tv_zonglicheng;
+	
+	private boolean isStop = false;
+	UIHandler mHandler = new UIHandler();
 
+	@Override
+	public void onPause() {
+
+		isStop = true;
+		super.onPause();
+	}
+	
+	private final class UIHandler extends Handler {
+		public void handleMessage(Message msg) {
+			initialize();
+		}
+	}
 	public void initialize() {
 		DataFromWholeController3 dw3 = DataHandler1.dw3;
 		DataFromWholeController1 dw1 = DataHandler1.dw1;
@@ -66,8 +81,22 @@ public class WholeActivity extends FragmentActivity {
 		DataFromWholeController8 dw8 = DataHandler1.dw8;
 		DataFromWholeController9 dw9 = DataHandler1.dw9;
 		tv_chesu = (TextView) this.findViewById(R.id.wc_chesu);
-		tv_chesu.setText(Float.toString(dw3.shishichesu));
+		//tv_chesu.setText(Float.toString(dw3.shishichesu));
 
+		
+		int index = new Float(dw3.shishichesu).toString().indexOf(".");
+		if (index == 1) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 3));
+		}
+		if (index == 2) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 4));
+		}
+		if (index == 3) {
+			tv_chesu.setText(Float.toString(dw3.shishichesu).substring(0, 3));
+		}
+		
+		
+		
 		tv_dangwei = (TextView) this.findViewById(R.id.wc_dangwei);
 		if (dw1.daodangxinhao == 1)
 			tv_dangwei.setText("R");
@@ -77,11 +106,40 @@ public class WholeActivity extends FragmentActivity {
 			tv_dangwei.setText("N");
 
 		tv_shache = (TextView) this.findViewById(R.id.wc_shache);
-		tv_shache.setText(Float.toString(dw2.zhidongmonixihao));
+		int index1 = new Float(dw2.zhidongmonixihao).toString()
+				.indexOf(".");
+		if (index1 == 1) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 3)
+					+ "%");
+		}
+		if (index1 == 2) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 4)
+					+ "%");
+		}
+		if (index1 == 3) {
+			tv_shache.setText(Float.toString(dw2.zhidongmonixihao).substring(0, 3)
+					+ "%");
+		}
+	//	tv_shache.setText(Float.toString(dw2.zhidongmonixihao));
 
 		tv_youmen = (TextView) this.findViewById(R.id.wc_youmen);
-		tv_youmen.setText(Float.toString(dw2.youmenmonixihao));
-
+	//	tv_youmen.setText(Float.toString(dw2.youmenmonixihao));
+		int index2 = new Float(dw2.youmenmonixihao).toString()
+				.indexOf(".");
+		if (index2 == 1) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 3)
+					+ "%");
+		}
+		if (index2 == 2) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 4)
+					+ "%");
+		}
+		if (index2 == 3) {
+			tv_youmen.setText(Float.toString(dw2.youmenmonixihao).substring(0, 3)
+					+ "%");
+		}
+		
+		
 		iv_dianzhidong = (ImageView) this.findViewById(R.id.wc_dianzhidong);
 		if (dw1.dianzhidongyouxiaoxinhao == 1) {
 			iv_dianzhidong.setBackgroundResource(R.drawable.onstatus);
@@ -240,7 +298,21 @@ public class WholeActivity extends FragmentActivity {
 		wl.height = 770;
 		window.setAttributes(wl);
 				
-		 initialize();
+		new Thread() {
+			@Override
+			public void run() {
+				while (!isStop) {
+					mHandler.sendEmptyMessage(0);
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
+		// initialize();
 	}
 
 }

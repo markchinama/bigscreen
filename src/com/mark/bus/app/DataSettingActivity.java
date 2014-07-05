@@ -43,7 +43,7 @@ public class DataSettingActivity extends Activity {
 
 	public void initialize() {
 		BusApplication ba = (BusApplication) getApplication();
-		int[] buttonStatus = ba.getButtonStatus();
+		int[] buttonStatus = ba.getDataStatus();
 
 		ImageButton[] ims = { wlanButton, dataButton, intensityButton,
 				lockButton, wifiButton, nfcButton, videoButton, fileButton };
@@ -227,11 +227,11 @@ public class DataSettingActivity extends Activity {
 			int[] dataStatus = ba.getDataStatus();
 			if (dataStatus[id] == 0) {
 				dataStatus[id] = 1;
-				ba.setButtonStatus(dataStatus);
+				ba.setDataStatus(dataStatus);
 				v.setBackgroundResource(lightsOnResource[id]);
 			} else {
 				dataStatus[id] = 0;
-				ba.setButtonStatus(dataStatus);
+				ba.setDataStatus(dataStatus);
 				v.setBackgroundResource(lightsOffResource[id]);
 			}
 

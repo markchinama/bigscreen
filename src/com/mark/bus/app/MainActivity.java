@@ -2,6 +2,7 @@ package com.mark.bus.app;
 
 import com.mark.bus.R;
 import com.mark.bus.data.DataHandler;
+import com.mark.bus.data.DataHandler1;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -13,7 +14,6 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,8 +32,11 @@ import android.widget.TextView;
 
 public class MainActivity extends FragmentActivity {
 	// for demo
-	private int fakeCount = 0;
-	private UpdataUIHandler updataUIHandler = new UpdataUIHandler();
+	private boolean acrealstatus = false;
+	private boolean popActivity = false;
+	private UpdateUIHandler updateUIHandler = new UpdateUIHandler();
+	private UpdateAnimHandler updateAnimHandler = new UpdateAnimHandler();
+	private UpdateAnimThread updateAnimThread = new UpdateAnimThread();
 	private UpdateUIThread updateUIThread = new UpdateUIThread();
 	private SendDataThread sendDataThread = new SendDataThread();
 	// datas
@@ -76,7 +79,8 @@ public class MainActivity extends FragmentActivity {
 	BusFragment busFragment = new BusFragment();
 	ButtonsFragment buttonsFragment = new ButtonsFragment();
 	BusInfoFragment busInfoFragment = new BusInfoFragment();
-
+	BusVideoFragment busVideoFragment = new BusVideoFragment();
+	BusExpertFragment busExpertFragment = new BusExpertFragment();
 	// airbuttons
 	private ImageButton acUpButton;
 	private ImageButton acDownButton;
@@ -98,9 +102,15 @@ public class MainActivity extends FragmentActivity {
 	private SeekBar sb;
 	private ImageView ac_modle_image;
 
+	// battery panel text
+	private ImageView iv_process_socre;
+	private TextView tv_socre;
 	private TextView status_battery_panel_number;
 	private TextView status_energy_panel_number;
 	private TextView status_distance_panel_number;
+	private ImageView status_battery_panel_process;
+	private ImageView status_energy_panel_process;
+	private ImageView status_distance_panel_process;
 
 	// handlers
 	private ModelHandler modelHandler = new ModelHandler();
@@ -157,6 +167,15 @@ public class MainActivity extends FragmentActivity {
 		rearlighton = (ImageView) findViewById(R.id.rearlighton);
 		cabinetopen = (ImageView) findViewById(R.id.cabinetopen);
 
+		midopenlighton = (ImageView) findViewById(R.id.midopenlighton);
+		midopenlightoff = (ImageView) findViewById(R.id.midopenlightoff);
+		frontopenlighton = (ImageView) findViewById(R.id.frontopenlighton);
+		frontopenlightoff = (ImageView) findViewById(R.id.frontopenlightoff);
+		frontlighton = (ImageView) findViewById(R.id.frontlighton);
+		frontheadlighton = (ImageView) findViewById(R.id.frontheadlighton);
+		rearlighton = (ImageView) findViewById(R.id.rearlighton);
+		cabinetopen = (ImageView) findViewById(R.id.cabinetopen);
+
 		anim_roadline = (ImageView) findViewById(R.id.anim_roadline);
 		anim_roadline.setBackgroundResource(R.drawable.roadlineanim);
 		animationDrawable = (AnimationDrawable) anim_roadline.getBackground();
@@ -199,7 +218,6 @@ public class MainActivity extends FragmentActivity {
 		topButtons[3] = expertButton;
 		topButtons[4] = listHomeButton;
 		ba = (BusApplication) getApplication();
-		ba.setCrashHandler(crashHandler);
 		ba.setHandler(modelHandler);
 		ba.setAcModleHandler(acModeHandler);
 		model_btn.setOnClickListener(new ModelButtonListner());
@@ -264,7 +282,9 @@ public class MainActivity extends FragmentActivity {
 		initializeAnimation();
 		showFragment(busFragment);
 		updateUIThread.start();
+		updateAnimThread.start();
 		sendDataThread.start();
+
 	}
 
 	public void stopAllAnimation() {
@@ -609,22 +629,33 @@ public class MainActivity extends FragmentActivity {
 	}
 
 	public void initialize() {
+		iv_process_socre = (ImageView)this.findViewById(R.id.process_socre);
+		tv_socre = (TextView)this.findViewById(R.id.socre);
+		tv_socre.setText("0分");
+		
 		status_battery_panel_number = (TextView) this
 				.findViewById(R.id.status_battery_panel_number);
 
-		status_battery_panel_number.setText("78%");
+		status_battery_panel_number.setText("0.0%");
 		status_energy_panel_number = (TextView) this
 				.findViewById(R.id.status_energy_panel_number);
-		status_energy_panel_number.setText("246");
+		status_energy_panel_number.setText("0");
 		status_distance_panel_number = (TextView) this
 				.findViewById(R.id.status_distance_panel_number);
-		status_distance_panel_number.setText("257");
+		status_distance_panel_number.setText("0");
+
+		status_battery_panel_process = (ImageView) this
+				.findViewById(R.id.power_progressbar);
+		status_energy_panel_process = (ImageView) this
+				.findViewById(R.id.energy_progressbar);
+		status_distance_panel_process = (ImageView) this
+				.findViewById(R.id.mile_progressbar);
 
 		ac_text.setText(new Integer(DataHandler.ac2bus.shedingwendu).toString()
 				+ "℃");
 		power_text.setText(new Float(DataHandler.ac2bus.kongtiaogonglv)
 				.toString() + "kw");
-
+		acfengsudangwei.setText("1");
 	}
 
 	public void bindAllUI() {
@@ -645,34 +676,15 @@ public class MainActivity extends FragmentActivity {
 
 			public void onClick(View arg0) {
 				if (!acon) {
-					av1.setVisibility(View.VISIBLE);
-					av1.setVisibility(View.VISIBLE);
-					av2.setVisibility(View.VISIBLE);
-					av3.setVisibility(View.VISIBLE);
-					av4.setVisibility(View.VISIBLE);
-					av5.setVisibility(View.VISIBLE);
-					av6.setVisibility(View.VISIBLE);
-					airAnimationStart1();
-					airAnimationStart2();
-					airAnimationStart3();
-					airAnimationStart4();
-					airAnimationStart5();
-					airAnimationStart6();
+
 					acShowDownButton.setBackgroundResource(R.drawable.air_on);
 					DataHandler.ac2bus.kongtiaogongzuozhuangtai = 1;
 					acon = true;
 				} else {
-					stopAllAnimation();
 					DataHandler.ac2bus.kongtiaogongzuozhuangtai = 0;
 					acon = false;
 					acShowDownButton.setBackgroundResource(R.drawable.air_off);
-					av1.setVisibility(View.GONE);
-					av1.setVisibility(View.GONE);
-					av2.setVisibility(View.GONE);
-					av3.setVisibility(View.GONE);
-					av4.setVisibility(View.GONE);
-					av5.setVisibility(View.GONE);
-					av6.setVisibility(View.GONE);
+
 				}
 			}
 		});
@@ -845,7 +857,8 @@ public class MainActivity extends FragmentActivity {
 
 		public void onClick(View v) {
 
-			Intent intent = new Intent(MainActivity.this, ModelActivity.class);
+			Intent intent = new Intent(MainActivity.this,
+					WorkModelActivity.class);
 
 			MainActivity.this.startActivity(intent);
 
@@ -876,7 +889,7 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void onClick(View v) {
 
-			if(currentTopButtonId ==bid)
+			if (currentTopButtonId == bid)
 				return;
 			showPress(bid);
 
@@ -894,6 +907,15 @@ public class MainActivity extends FragmentActivity {
 				showFragment(busInfoFragment);
 				return;
 			}
+			if (v.equals(cameralButton)) {
+				showFragment(busVideoFragment);
+				return;
+
+			}
+
+			if (v.equals(expertButton)) {
+				showFragment(busExpertFragment);
+			}
 		}
 	}
 
@@ -909,6 +931,17 @@ public class MainActivity extends FragmentActivity {
 		@Override
 		public void handleMessage(Message msg) {
 
+			if(! DataHandler1.dfc.dProtected && (DataHandler1.dfc.crash !=0) && !popActivity){
+			Intent intent = new Intent(MainActivity.this,
+					CrashActivity.class);
+
+            MainActivity.this.startActivity(intent);
+            popActivity = true;
+            }
+			
+			
+          };
+			/*
 			CrashCheckFragment crashCheckFragment = new CrashCheckFragment();
 
 			FragmentTransaction transaction = MainActivity.this
@@ -918,9 +951,8 @@ public class MainActivity extends FragmentActivity {
 					crashCheckFragment);
 			// commit after activity saveInstatance ,pls use
 			// commitAllowingStateLoss
-			transaction.commitAllowingStateLoss();
+			transaction.commitAllowingStateLoss();*/
 		}
-	}
 
 	final class ACModeHandler extends Handler {
 		@Override
@@ -949,72 +981,202 @@ public class MainActivity extends FragmentActivity {
 
 	}
 
-	final class UpdataUIHandler extends Handler {
+	final class UpdateUIHandler extends Handler {
 		@Override
 		public void handleMessage(Message msg) {
-			midopenlighton = (ImageView) findViewById(R.id.midopenlighton);
-			midopenlightoff = (ImageView) findViewById(R.id.midopenlightoff);
-			frontopenlighton = (ImageView) findViewById(R.id.frontopenlighton);
-			frontopenlightoff = (ImageView) findViewById(R.id.frontopenlightoff);
-			frontlighton = (ImageView) findViewById(R.id.frontlighton);
-			frontheadlighton = (ImageView) findViewById(R.id.frontheadlighton);
-			rearlighton = (ImageView) findViewById(R.id.rearlighton);
-			cabinetopen = (ImageView) findViewById(R.id.cabinetopen);
-			fakeCount++;
-			if (fakeCount % 11 == 0) {
+			
+			int socre = DataHandler1.dw9.jiashidefen;
+			tv_socre.setText(new Integer(socre).toString() + "分");
+			if(socre == 0)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_0);
+			else if(socre > 0 && socre <=5)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_5);
+			else if(socre > 5 && socre <= 10)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_10);
+			else if(socre > 10 && socre <= 15)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_15);
+			else if(socre > 15 && socre <= 20)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_20);
+			else if(socre > 20 && socre <= 25)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_25);
+			else if(socre > 25 && socre <= 30)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_30);
+			else if(socre > 30 && socre <= 35)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_35);
+			else if(socre > 35 && socre <= 40)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_40);
+			else if(socre > 40 && socre <= 45)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_45);
+			else if(socre > 45 && socre <= 50)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_50);
+			else if(socre > 50 && socre <= 55)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_55);
+			else if(socre > 55 && socre <= 60)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_60);
+			else if(socre > 60 && socre <= 65)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_65);
+			else if(socre > 65 && socre <= 70)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_70);
+			else if(socre > 70 && socre <= 75)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_75);
+			else if(socre > 75 && socre <=80)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_80);
+			else if(socre > 80 && socre <= 85)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_85);
+			else if(socre > 85 && socre <= 90)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_90);
+			else if(socre > 90 && socre <= 95)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_95);
+			else if(socre == 100)
+				iv_process_socre.setBackgroundResource(R.drawable.socre_100);
+			
+			
+				
+			int index = new Float(DataHandler1.db1.dianchisoc).toString()
+					.indexOf(".");
+			if (index == 1) {
+				status_battery_panel_number.setText(new Float(
+						DataHandler1.db1.dianchisoc).toString().substring(0, 3)
+						+ "%");
+			}
+			if (index == 2) {
+				status_battery_panel_number.setText(new Float(
+						DataHandler1.db1.dianchisoc).toString().substring(0, 4)
+						+ "%");
+			}
+			if (index == 3) {
+				status_battery_panel_number.setText(new Float(
+						DataHandler1.db1.dianchisoc).toString().substring(0, 3)
+						+ "%");
+			}
 
-				cabinetopen.setVisibility(View.VISIBLE);
-				return;
-			}
-			if (fakeCount % 11 == 1) {
-				cabinetopen.setVisibility(View.GONE);
-				rearlighton.setVisibility(View.VISIBLE);
-				return;
-			}
-			if (fakeCount % 11 == 2) {
-				rearlighton.setVisibility(View.GONE);
-				frontheadlighton.setVisibility(View.VISIBLE);
-				return;
-			}
-			if (fakeCount % 11 == 3) {
-				frontheadlighton.setVisibility(View.GONE);
-				frontlighton.setVisibility(View.VISIBLE);
-				return;
+			status_energy_panel_number.setText(new Integer(
+					(int) DataHandler1.db3.shengyunengliang).toString());
+			status_distance_panel_number.setText(new Integer(
+					(int) DataHandler1.dw8.kexingshilicheng).toString());
 
-			}
-			if (fakeCount % 11 == 4) {
-				frontlighton.setVisibility(View.GONE);
-				buslightoff.setVisibility(View.VISIBLE);
-				return;
+			if (DataHandler1.db1.dianchisoc < 10.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg0);
+			else if (DataHandler1.db1.dianchisoc < 20.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg1);
+			else if (DataHandler1.db1.dianchisoc < 30.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg2);
+			else if (DataHandler1.db1.dianchisoc < 40.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg3);
+			else if (DataHandler1.db1.dianchisoc < 50.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg4);
+			else if (DataHandler1.db1.dianchisoc < 60.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg5);
+			else if (DataHandler1.db1.dianchisoc < 70.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg6);
+			else if (DataHandler1.db1.dianchisoc < 80.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg7);
+			else if (DataHandler1.db1.dianchisoc < 90.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg8);
+			else if (DataHandler1.db1.dianchisoc <= 100.0)
+				status_battery_panel_process
+						.setImageResource(R.drawable.process_bg9);
 
+			if (DataHandler1.db3.shengyunengliang / 405 < 0.1){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg0);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg0);
 			}
-			if (fakeCount % 11 == 5) {
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.2){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg1);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg1);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.3){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg2);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg2);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.4){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg3);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg3);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.5){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg4);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg4);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.6){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg5);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg5);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.7){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg6);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg6);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.8){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg7);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg7);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 < 0.9){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg8);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg8);
+			}
+			else if (DataHandler1.db3.shengyunengliang / 405 <= 1.0){
+				status_energy_panel_process
+						.setImageResource(R.drawable.process_bg9);
+				status_distance_panel_process
+				.setImageResource(R.drawable.process_bg9);
+			}
 
-				frontopenlightoff.setVisibility(View.VISIBLE);
-				return;
-			}
-			if (fakeCount % 11 == 6) {
-				frontopenlightoff.setVisibility(View.GONE);
-				midopenlightoff.setVisibility(View.VISIBLE);
-			}
-			if (fakeCount % 11 == 7) {
-				frontopenlightoff.setVisibility(View.GONE);
-				midopenlightoff.setVisibility(View.GONE);
-
-			}
-			if (fakeCount % 11 == 8) {
-
-				midopenlighton.setVisibility(View.VISIBLE);
-			}
-			if (fakeCount % 11 == 9) {
-				midopenlighton.setVisibility(View.GONE);
-				frontopenlighton.setVisibility(View.VISIBLE);
-
-			}
-			if (fakeCount % 11 == 10) {
-				frontopenlighton.setVisibility(View.GONE);
-			}
-
+	/*		if (DataHandler1.dw8.kexingshilicheng / 405 < 0.1)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg0);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.2)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg1);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.3)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg2);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.4)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg3);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.5)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg4);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.6)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg5);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.7)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg6);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.8)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg7);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 < 0.9)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg8);
+			else if (DataHandler1.dw8.kexingshilicheng / 405 <= 1.0)
+				status_distance_panel_process
+						.setImageResource(R.drawable.process_bg9);*/
 		}
 	}
 
@@ -1024,13 +1186,105 @@ public class MainActivity extends FragmentActivity {
 		public void run() {
 			while (true) {
 				try {
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				// TODO Auto-generated method stub
-				updataUIHandler.sendEmptyMessage(0);
+				updateUIHandler.sendEmptyMessage(0);
+				crashHandler.sendEmptyMessage(0);
+			}
+		}
+	}
+
+	
+
+	final class UpdateAnimHandler extends Handler {
+		@Override
+		public void handleMessage(Message msg) {
+			if (DataHandler1.da.kongtiaogongzuozhuangtai == 0) {
+				acrealstatus = false;
+				stopAllAnimation();
+				av1.setVisibility(View.GONE);
+				av1.setVisibility(View.GONE);
+				av2.setVisibility(View.GONE);
+				av3.setVisibility(View.GONE);
+				av4.setVisibility(View.GONE);
+				av5.setVisibility(View.GONE);
+				av6.setVisibility(View.GONE);
+			} else if ((DataHandler1.da.kongtiaogongzuozhuangtai == 1)
+					&& !acrealstatus) {
+				av1.setVisibility(View.VISIBLE);
+				av1.setVisibility(View.VISIBLE);
+				av2.setVisibility(View.VISIBLE);
+				av3.setVisibility(View.VISIBLE);
+				av4.setVisibility(View.VISIBLE);
+				av5.setVisibility(View.VISIBLE);
+				av6.setVisibility(View.VISIBLE);
+				airAnimationStart1();
+				airAnimationStart2();
+				airAnimationStart3();
+				airAnimationStart4();
+				airAnimationStart5();
+				airAnimationStart6();
+			}
+
+			if (DataHandler1.dbcm.yuanguangdeng == 1)
+				frontheadlighton.setVisibility(View.VISIBLE);
+			else
+				frontheadlighton.setVisibility(View.GONE);
+			if (DataHandler1.dbcm.jinguangdeng == 1)
+				frontlighton.setVisibility(View.VISIBLE);
+			else
+				frontlighton.setVisibility(View.GONE);
+			if (DataHandler1.dbcm.zhidongdeng == 1)
+				rearlighton.setVisibility(View.VISIBLE);
+			else
+				rearlighton.setVisibility(View.GONE);
+			if (DataHandler1.dbcm.houcangmendianchiganyingshixianweikaiguan == 1)
+				cabinetopen.setVisibility(View.VISIBLE);
+			else
+				cabinetopen.setVisibility(View.GONE);
+
+			if (DataHandler1.dbcm.dingdanbaideng == 1
+					|| DataHandler1.dbcm.dingshuangbaideng == 1) {
+				buslightoff.setVisibility(View.GONE);
+				if (DataHandler1.dbcm.mid_door == 1)
+					midopenlighton.setVisibility(View.VISIBLE);
+				else
+					midopenlighton.setVisibility(View.GONE);
+				if (DataHandler1.dbcm.front_door == 1)
+					frontopenlighton.setVisibility(View.VISIBLE);
+				else
+					frontopenlighton.setVisibility(View.GONE);
+
+			} else {
+				buslightoff.setVisibility(View.VISIBLE);
+				if (DataHandler1.dbcm.mid_door == 1)
+					midopenlightoff.setVisibility(View.VISIBLE);
+				else
+					midopenlightoff.setVisibility(View.GONE);
+				if (DataHandler1.dbcm.front_door == 1)
+					frontopenlightoff.setVisibility(View.VISIBLE);
+				else
+					frontopenlightoff.setVisibility(View.GONE);
+			}
+		}
+	}
+
+	private class UpdateAnimThread extends Thread {
+		@Override
+		public void run() {
+			while (true) {
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// TODO Auto-generated method stub
+				updateAnimHandler.sendEmptyMessage(0);
 			}
 		}
 	}
@@ -1044,9 +1298,12 @@ public class MainActivity extends FragmentActivity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-				DataHandler.setButtons(ba.getButtonStatus());
+				// int[] btnsStatus = ba.getButtonStatus();
+				// DataHandler.setButtons(btnsStatus[0],btnsStatus[1],btnsStatus[2],btnsStatus[3],btnsStatus[4],btnsStatus[5],btnsStatus[6],btnsStatus[7],btnsStatus[8],btnsStatus[9],btnsStatus[10],btnsStatus[11]);//if
+				// using array, array release failed! memory leak risk happened.
+				DataHandler.setButtonsStatus();
 				DataHandler.setACData();
+				DataHandler.setWorkModeData();
 			}
 		}
 	}

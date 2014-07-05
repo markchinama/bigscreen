@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.mark.bus.R;
+import com.mark.bus.data.DataHandler1;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,20 +123,9 @@ public class BLAdapter extends BaseAdapter {
 				showFragment(busCanFragment);
 			}
 			if (position == 7) {
-				if (!(ba == null)) {
-					if (ba.getCrashStatus() == 3) {
-
-						Intent intent = new Intent(view.getContext(),
-								CrashActivity.class);
-
-						view.getContext().startActivity(intent);
-					} else {
 						CrashCheckFragment crashCheckFragment = new CrashCheckFragment();
 						showFragment(crashCheckFragment);
 					}
-				}
-			}
-
 		}
 	}
 

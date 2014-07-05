@@ -26,7 +26,7 @@ public class ButtonsFragment extends Fragment {
 			R.drawable.right_turning_on, R.drawable.none_on,
 
 	};
-
+	
 	private ImageButton frontFogButton;
 
 	private ImageButton rearFogButton;
@@ -129,10 +129,12 @@ public class ButtonsFragment extends Fragment {
 				buttonStatus[id] = 1;
 				ba.setButtonStatus(buttonStatus);
 				v.setBackgroundResource(lightsOnResource[id]);
+			    DataHandler.btnsStatus[id] =1;
 			} else {
 				buttonStatus[id] = 0;
 				ba.setButtonStatus(buttonStatus);
 				v.setBackgroundResource(lightsOffResource[id]);
+				DataHandler.btnsStatus[id] =0;
 			}
 			//DataHandler.setButtonsStatus(buttonStatus);
 			//animHandler.sendEmptyMessage(0);

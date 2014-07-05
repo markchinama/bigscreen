@@ -2,6 +2,8 @@ package com.mark.bus.app;
 
 import com.mark.bus.R;
 import com.mark.bus.app.MainActivity.CrashHandler;
+import com.mark.bus.data.DataHandler;
+import com.mark.bus.data.DataHandler1;
 
 import android.graphics.Point;
 import android.os.Bundle;
@@ -39,11 +41,8 @@ public class CrashActivity extends FragmentActivity {
 
 			@Override
 			public void onClick(View v) {
-				BusApplication ba = (BusApplication) CrashActivity.this
-						.getApplication();
-				ba.setCrashStatus(2);
-				ba.getCrashHandler().sendEmptyMessage(1);
-
+			  DataHandler.workMode2Bus.crash=0x55;
+			  DataHandler1.dfc.dProtected = true;
 				finish();
 
 			}
@@ -53,12 +52,10 @@ public class CrashActivity extends FragmentActivity {
 		WindowManager.LayoutParams wl = window.getAttributes();
 		wl.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 		wl.alpha = 1.0f;
-
-
-		wl.x = 0;
-		wl.y = -5;
-		wl.width = 500;
-		wl.height = 600;
+		wl.x = -50;
+		wl.y = -10;
+		wl.width = 768;
+		wl.height = 770;
 		window.setAttributes(wl);
 
 	}

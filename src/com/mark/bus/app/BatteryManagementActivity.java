@@ -1,5 +1,8 @@
 package com.mark.bus.app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.mark.bus.R;
 import com.mark.bus.data.DataFromBMS1;
 import com.mark.bus.data.DataFromBMS2;
@@ -8,7 +11,11 @@ import com.mark.bus.data.DataHandler1;
 
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -38,6 +45,25 @@ public class BatteryManagementActivity extends FragmentActivity {
 	private TextView tv_zuididianyadianchixiangjieshu;
 	private TextView tv_chongdianzhuanglianjiebiaozhiwei;
 	private TextView tv_jinzhichongdianbiaozhi;
+	List<Fragment> fragmentList = new ArrayList<Fragment>();
+
+	private boolean isStop = false;
+	UIHandler mHandler = new UIHandler();
+	private final class UIHandler extends Handler {
+		public void handleMessage(Message msg) {			
+			initialize();
+		}
+	}
+	@Override
+	public void onPause() {
+
+		isStop = true;
+		super.onPause();
+	}
+	
+	/** 页面title list **/
+
+	List<String> titleList = new ArrayList<String>();
 
 	public void initialize() {
 		DataFromBMS1 db1 = DataHandler1.db1;
@@ -49,7 +75,7 @@ public class BatteryManagementActivity extends FragmentActivity {
 				.toString(db1.dianchixitongshishizongdianya));
 
 		tv_dianchisoc = (TextView) this.findViewById(R.id.bma_dianchisoc);
-		tv_dianchizongdianya.setText((CharSequence) Float
+		tv_dianchisoc.setText((CharSequence) Float
 				.toString(db1.dianchisoc));
 
 		tv_dianchizongxiangshu = (TextView) this
@@ -73,9 +99,13 @@ public class BatteryManagementActivity extends FragmentActivity {
 		// ////////////////////////////////////////////////
 		tv_mokuaizuigaowendu = (TextView) this
 				.findViewById(R.id.bma_mokuaizuigaowendu);
+		tv_mokuaizuigaowendu.setText((CharSequence) Float
+				.toString(db2.dianchimokuaizuigaowendu));
 
 		tv_mokuaizuidiwendu = (TextView) this
 				.findViewById(R.id.bma_mokuaizuidiwendu);
+		tv_mokuaizuidiwendu.setText((CharSequence) Float
+				.toString(db2.dianchimokuaizuigaowendu - db2.dianchimokuaiwendujicha));
 		// /////////////////////////////////////////////////
 		tv_zuigaowendudianchiweizhi = (TextView) this
 				.findViewById(R.id.bma_zuigaowendudianchixiangweizhi);
@@ -90,10 +120,13 @@ public class BatteryManagementActivity extends FragmentActivity {
 		// /////////////////////////////////////////////////
 		tv_dantizuigaodianya = (TextView) this
 				.findViewById(R.id.bma_dantizuigaodianya);
-
+		tv_dantizuigaodianya.setText((CharSequence) Integer
+				.toString(db2.dianchimokuaizuigaodianya));
+		
 		tv_dantizuididianya = (TextView) this
 				.findViewById(R.id.bma_dantizuididianya);
-
+	    tv_dantizuididianya.setText((CharSequence) Integer
+				.toString(db2.dianchimokuaizuididianya));
 		// /////////////////////////////////////////////////
 
 		tv_zuigaodianyadianchiweizhi = (TextView) this
@@ -118,8 +151,7 @@ public class BatteryManagementActivity extends FragmentActivity {
 
 		tv_chongdianzhuanglianjiebiaozhiwei = (TextView) this
 				.findViewById(R.id.bma_chongdianzhuanglianjiebiaozhiwei);
-		tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) Integer
-				.toString(db1.chongdianzhuanglianjiebiaozhiwei));
+		
 
 		tv_jinzhichongdianbiaozhi = (TextView) this
 				.findViewById(R.id.bma_jinzhichongdianbiaozhi);
@@ -130,9 +162,8 @@ public class BatteryManagementActivity extends FragmentActivity {
 			tv_jinzhichongdianbiaozhi.setText((CharSequence) this
 					.getResources().getString(R.string.yunxuchongdian));
 		}
-		tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) Integer
-				.toString(db1.shifoujinzhichongdianbiaozhiwei));
-		if (db1.shifoujinzhichongdianbiaozhiwei == 1) {
+		
+		if (db1.chongdianzhuanglianjiebiaozhiwei == 1) {
 			tv_chongdianzhuanglianjiebiaozhiwei.setText((CharSequence) this
 					.getResources().getString(R.string.yilianjie));
 		} else {
@@ -146,6 +177,20 @@ public class BatteryManagementActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		super.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		super.setContentView(R.layout.battery_management_activity);
+		ViewPager vp = (ViewPager)findViewById(R.id.viewPager);
+	
+		fragmentList.add(new BatteryViewPagerFragment(0));
+
+		fragmentList.add(new BatteryViewPagerFragment(1));
+
+		fragmentList.add(new BatteryViewPagerFragment(2));
+
+		titleList.add("title 1 ");
+
+		titleList.add("title 2 ");
+
+		titleList.add("title 3 ");
+		  vp.setAdapter(new BatteryViewPagerAdapter(getSupportFragmentManager(), fragmentList, titleList));
 		closeBtn = (ImageButton) this.findViewById(R.id.bma_closebtn);
 
 		closeBtn.setOnClickListener(new View.OnClickListener() {
@@ -166,7 +211,21 @@ public class BatteryManagementActivity extends FragmentActivity {
 		wl.width = 768;
 		wl.height = 770;
 		window.setAttributes(wl);
-		initialize();
+		//initialize();
+		new Thread() {
+			@Override
+			public void run() {
+				while (!isStop) {
+					mHandler.sendEmptyMessage(0);
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+		}.start();
 	}
 
 }

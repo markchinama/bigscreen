@@ -32,47 +32,68 @@ public class DataHandler1 {
 
 	public static DataFromBusCanModule dbcm = new DataFromBusCanModule();
 
+	public static DataFromCan2 dfcb = new DataFromCan2();
+
+	public static DataFromCrash dfc = new DataFromCrash();
+	
 	public static void testd() {
 		System.out.println("this is form c through jni");
 	}
 
 	public static void setDBCM(int[] i) {
-		dbcm.zhizongdianyuanjidianqi = i[0];
-		dbcm.weishangjiandeng = i[1];
-		dbcm.houcangmendianchiganyingshixianweikaiguan = i[2];
-		dbcm.weishengjianqiangzhipaiwu = i[3];
-		dbcm.qidongjidianqi = i[4];
-		dbcm.daochedeng = i[5];
-		dbcm.zhidongdeng = i[6];
-		dbcm.houwudeng = i[7];
-		dbcm.xinglijiadeng = i[8];
-		dbcm.dinglandeng = i[9];
-		dbcm.zuozhuanxiangdeng = i[10];
-		dbcm.youzhuanxiangdeng = i[11];
-		dbcm.jiashiyuandingdeng = i[12];
-		dbcm.dingshuangbaideng = i[13];
-		dbcm.dingdanbaideng = i[14];
-		dbcm.yuedudeng = i[15];
-		dbcm.zhongmenkaimendiancifa = i[16];
-		dbcm.zhongmenguanmendiancifa = i[17];
-		dbcm.dianshijidianyuan = i[18];
-		dbcm.weishengjianyourenzhishideng = i[19];
-		dbcm.zhongmentabudeng = i[20];
-		dbcm.youxinglicangzhaomingdeng = i[21];
-		dbcm.yuguaqimandang = i[23];
-		dbcm.shigaodeng = i[24];
-		dbcm.labazhuanhuankaiguan = i[25];
-		dbcm.kongtiaokaiguandianyuan = i[26];
-		dbcm.yuguaqikuaidang = i[27];
-		dbcm.youqianzhuanxiang = i[28];
-		dbcm.zuoqianzhuanxiang = i[29];
-		dbcm.penshuidianji = i[30];
-		dbcm.guanmendiancifa = i[31];
-		dbcm.kaimendiancifa = i[32];
-		dbcm.jinguangdeng = i[33];
-		dbcm.qianwudeng = i[34];
-		dbcm.yuanguangdeng = i[35];
-		dbcm.qianmentabudeng = i[36];
+		
+		dbcm.front_door=i[39];
+		dbcm.mid_door=i[40];		
+		dbcm.zhizongdianyuanjidianqi = i[41];
+		dbcm.weishangjiandeng = i[42];
+		dbcm.disansuidongqiaokongzhidiancifa = i[43];
+		dbcm.fadongjishuiweichuanganqidianyuan = i[44];
+		dbcm.houcangmendianchiganyingshixianweikaiguan = i[45];
+
+		dbcm.nuanshuidiancifa = i[32];
+		dbcm.weishengjianqiangzhipaiwu = i[33];
+		dbcm.qidongjidianqi = i[34];
+		dbcm.fadongjicangzhaomingdeng = i[35];
+		dbcm.daochedeng = i[36];
+		dbcm.zhidongdeng = i[37];
+		dbcm.houwudeng = i[38];
+
+		dbcm.xinglijiadeng = i[24];
+		dbcm.dinglandeng = i[25];
+		dbcm.zuozhuanxiangdeng = i[26];
+		dbcm.youzhuanxiangdeng = i[27];
+		dbcm.jiashiyuandingdeng = i[28];
+		dbcm.dingshuangbaideng = i[29];
+		dbcm.dingdanbaideng = i[30];
+		dbcm.yuedudeng = i[31];
+
+		dbcm.gaoyacangzhaomingdeng = i[16];
+		dbcm.zhongmenkaimendiancifa = i[17];
+		dbcm.zhongmenguanmendiancifa = i[18];
+		dbcm.dianshijidianyuan = i[19];
+		dbcm.weishengjianyourenzhishideng = i[20];
+		dbcm.zhongmentabudeng = i[21];
+		dbcm.youxinglicangzhaomingdeng = i[22];
+		dbcm.zuoxinglicangzhaomingdeng = i[23];
+
+		dbcm.jiansuqidianyuan = i[8];
+		dbcm.yuguaqimandang = i[9];
+		dbcm.shigaodeng = i[10];
+		dbcm.labazhuanhuankaiguan = i[11];
+		dbcm.kongtiaokaiguandianyuan = i[12];
+		dbcm.yuguaqikuaidang = i[13];
+		dbcm.youqianzhuanxiang = i[14];
+		dbcm.zuoqianzhuanxiang = i[15];
+
+		dbcm.dianzilupaikaiguan = i[0];
+		dbcm.penshuidianji = i[1];
+		dbcm.qianmenguanmendiancifa = i[2];
+		dbcm.qianmenkaimendiancifa = i[3];
+		dbcm.jinguangdeng = i[4];
+		dbcm.qianwudeng = i[5];
+		dbcm.yuanguangdeng = i[6];
+		dbcm.qianmentabudeng = i[7];
+		
 	}
 
 	public static void setDFA(int i1, int i2, int i3, int i4, int i5) {
@@ -243,6 +264,9 @@ public class DataHandler1 {
 		dw9.shoudaoqiaobankaiguanbihexinhao = i[11];
 		dw9.keyonxinhao = i[12];
 		dw9.shengyuchongdianshijian = i[13];
+		dw9.jiashidefen = i[14];
+		dw9.pingjundianhao = i[15];
+
 	}
 
 	public static void setDw8(float f1, int i1, float f2) {
@@ -289,37 +313,23 @@ public class DataHandler1 {
 
 	public static void setDw1(int i[], float f1, float f2) {
 
-		/*System.out.print(i[0]);
-		System.out.print(i[1]);
-		System.out.print(i[2]);
-		System.out.print(i[3]);
-		System.out.print(i[4]);
-		System.out.print(i[5]);
-		System.out.print(i[6]);
-		System.out.print(i[7]);
-		System.out.print(i[8]);
-		System.out.print(i[9]);
-		System.out.print(i[10]);
-		System.out.print(i[11]);
-		System.out.print(i[12]);
-		System.out.print(i[13]);
-		System.out.print(i[14]);
-		System.out.print(i[15]);
-		System.out.print(i[16]);
-		System.out.print(i[17]);
-		System.out.print(i[18]);
-		System.out.print(i[19]);
-		System.out.print(i[20]);
-		System.out.print(i[21]);
-		System.out.print(i[22]);
-		System.out.print(i[23]);
-		System.out.print(i[24]);
-		System.out.print(i[25]);
-		System.out.print(i[26]);
-		System.out.print(i[27]);		
-		System.out.print(f1);
-		System.out.print(f2);
-		*/
+		/*
+		 * System.out.print(i[0]); System.out.print(i[1]);
+		 * System.out.print(i[2]); System.out.print(i[3]);
+		 * System.out.print(i[4]); System.out.print(i[5]);
+		 * System.out.print(i[6]); System.out.print(i[7]);
+		 * System.out.print(i[8]); System.out.print(i[9]);
+		 * System.out.print(i[10]); System.out.print(i[11]);
+		 * System.out.print(i[12]); System.out.print(i[13]);
+		 * System.out.print(i[14]); System.out.print(i[15]);
+		 * System.out.print(i[16]); System.out.print(i[17]);
+		 * System.out.print(i[18]); System.out.print(i[19]);
+		 * System.out.print(i[20]); System.out.print(i[21]);
+		 * System.out.print(i[22]); System.out.print(i[23]);
+		 * System.out.print(i[24]); System.out.print(i[25]);
+		 * System.out.print(i[26]); System.out.print(i[27]);
+		 * System.out.print(f1); System.out.print(f2);
+		 */
 		dw1.gaoyaqiaobanbihexinhao = i[0];
 		dw1.yaoshistxinhao = i[1];
 		dw1.yaoshionxinhao = i[2];
@@ -348,9 +358,51 @@ public class DataHandler1 {
 		dw1.shuiweidixinhao = i[25];
 		dw1.kongtiaoqidongxinhao = i[26];
 		dw1.dianzhidongyouxiaoxinhao = i[27];
-		
+
 		dw1.zhengcheqiya = f1;
 		dw1.dianjiniuju = f2;
 	}
 
+	public static void setBatteryMonomerNumber(int protocolNumber, int i1,
+			int i2, int i3, int i4, int i5, int i6, int i7, int i8) {
+
+		dfcb.batteryMonomerNumbers[protocolNumber * 8] = i1;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 1] = i2;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 2] = i3;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 3] = i4;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 4] = i5;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 5] = i6;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 6] = i7;
+		dfcb.batteryMonomerNumbers[protocolNumber * 8 + 7] = i8;
+
+	}
+
+	public static void setBatteryModuleHighTemperature(int protocolNumber,
+			int h1, int h2, int h3, int h4) {
+
+		dfcb.batteryModuleHighTemperature[protocolNumber * 4] = h1;
+		dfcb.batteryModuleHighTemperature[protocolNumber * 4 + 1] = h2;
+		dfcb.batteryModuleHighTemperature[protocolNumber * 4 + 2] = h3;
+		dfcb.batteryModuleHighTemperature[protocolNumber * 4 + 3] = h4;
+	}
+
+	public static void setBatteryModuleLowTemperature(int protocolNumber,
+			int l1, int l2, int l3, int l4) {
+
+		dfcb.batteryModuleLowTemperature[protocolNumber * 4] = l1;
+		dfcb.batteryModuleLowTemperature[protocolNumber * 4 + 1] = l2;
+		dfcb.batteryModuleLowTemperature[protocolNumber * 4 + 2] = l3;
+		dfcb.batteryModuleLowTemperature[protocolNumber * 4 + 3] = l4;
+	}
+
+	public static void setBatteryMonomerVoltages(int protocolNumber, int v1,
+			int v2, int v3, int v4) {
+		dfcb.batteryMonomerVoltages[protocolNumber * 4] = v1;
+		dfcb.batteryMonomerVoltages[protocolNumber * 4 + 1] = v2;
+		dfcb.batteryMonomerVoltages[protocolNumber * 4 + 2] = v3;
+		dfcb.batteryMonomerVoltages[protocolNumber * 4 + 3] = v4;
+	}
+	public static void setCrash(int crash){
+		dfc.crash=crash;
+	}
 }

@@ -99,9 +99,9 @@
     <string name="lupaidianyuan">路牌电源</string>
     <string name="houcangmendianciganyingshixianweikaiguan">后仓门电磁感应式限位开关</string>
     <string name="shigaodeng">示高灯</string>
-    <string name="zhongmenkaimendiancifa">中文开门电磁阀</string>
+    <string name="zhongmenkaimendiancifa">中门开电磁阀</string>
     <string name="zhongmentabudeng">中门踏步灯</string>
-    <string name="yuguaqikuaidang">右前转向</string>
+    <string name="yuguaqikuaidang">雨刮器快档</string>
     <string name="zhidongdeng">制动灯</string>
     <string name="dingshuangbaideng">顶双白灯</string>
     <string name="zuoqianzhuanxiang">左前转向</string>
@@ -115,7 +115,7 @@
     <string name="yuanguangdeng">远光灯</string>
     <string name="houdianzilupai">后电子路牌</string>
     <string name="pengzhuangjiancebaohu">碰撞检测保护</string>
-    <string name="crashprotected">你的车辆发生碰撞，\r\n已启用碰撞保护</string>
+    <string name="crashprotected">你的车辆发生碰撞 \r\n已启用碰撞保护</string>
     <string name="pengzhuangfashengshijian">碰撞发生时间</string>
     <string name="baohuzhuangtai">保护状态</string>
     <string name="yijiechubaohu">已解除保护</string>
@@ -242,4 +242,8 @@
     <string name="issue">故障</string>
     <string name="yes">是</string>
     <string name="no">否</string>
+    <string name="errinfo">故障信息</string>
+    <string name="errsource">故障的来源:</string>
+    <string name="errtime">故障发生的起始时间:</string>
+    <string name="errcode">故障代码号:</string>
 </resources>

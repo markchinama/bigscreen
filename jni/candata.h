@@ -143,8 +143,8 @@ typedef struct controller_send9 {
 	unsigned char charge_left_time_high;
 
 	unsigned char :8;
-	unsigned char :8;
-	unsigned char :8;
+	unsigned char score;
+	unsigned char avg_currency_used;
 } controller_send_date9;
 
 typedef struct battery_send1 {
@@ -408,48 +408,11 @@ typedef struct fire_alam_send {
 
 typedef struct main_can_module_send {
 
-	unsigned char :2;
-	unsigned char relay_power :1;
-	unsigned char wc_light :1;
-	unsigned char :3;
-	unsigned char rear_compartment_door_inductive_switch :1;
+	unsigned char :8;
 
-	unsigned char :2;
-	unsigned char wc_force_pollution_discharge :1;
-	unsigned char relay :1;
-	unsigned char :1;
-	unsigned char back_light :1;
-	unsigned char break_light :1;
-	unsigned char rear_fog_light :1;
+	unsigned char :8;
 
-	unsigned char luggage_shelf_light :1;
-	unsigned char top_blue_light :1;
-	unsigned char turn_right_light :1;
-	unsigned char turn_left_light :1;
-	unsigned char drive_top_light :1;
-	unsigned char top_double_light :1;
-	unsigned char top_single_light :1;
-	unsigned char read_light :1;
-
-	unsigned char :1;
-	unsigned char mid_door_on :1;
-	unsigned char mid_door_off :1;
-	unsigned char tv_power :1;
-	unsigned char wc_occupied :1;
-	unsigned char mid_step :1;
-	unsigned char right_luggage_compartment_light :1;
-	unsigned char left_luggage_compartment_light :1;
-
-	unsigned char :1;
-	unsigned char wiper_slow :1;
-	unsigned char height_show :1;
-	unsigned char trumpet_switch :1;
-	unsigned char ac_switch :1;
-	unsigned char wiper_quick :1;
-	unsigned char front_trun_right_light :1;
-	unsigned char front_trun_left_light :1;
-
-	unsigned char :1;
+	unsigned char electric_road:1;
 	unsigned char warter_electric_mechine :1;
 	unsigned char front_door_off :1;
 	unsigned char front_door_on :1;
@@ -458,13 +421,79 @@ typedef struct main_can_module_send {
 	unsigned char far_light :1;
 	unsigned char front_step_light :1;
 
-	unsigned char :8;
+	unsigned char slow_battery:1;
+	unsigned char wiper_slow :1;
+	unsigned char height_show :1;
+	unsigned char trumpet_switch :1;
+	unsigned char ac_switch :1;
+	unsigned char wiper_quick :1;
+	unsigned char front_trun_right_light :1;
+	unsigned char front_trun_left_light :1;
 
-	unsigned char :8;
+	unsigned char high_vol_light:1;
+	unsigned char mid_door_on :1;
+	unsigned char mid_door_off :1;
+	unsigned char tv_power :1;
+	unsigned char wc_occupied :1;
+	unsigned char mid_step :1;
+	unsigned char right_luggage_compartment_light :1;
+	unsigned char left_luggage_compartment_light :1;
+
+	unsigned char luggage_shelf_light :1;
+	unsigned char top_blue_light :1;
+	unsigned char turn_left_light :1;
+	unsigned char turn_right_light :1;
+	unsigned char drive_top_light :1;
+	unsigned char top_double_light :1;
+	unsigned char top_single_light :1;
+	unsigned char read_light :1;
+
+	unsigned char :1;
+	unsigned char warm_water:1;
+	unsigned char wc_force_pollution_discharge :1;
+	unsigned char relay :1;
+	unsigned char engine_light:1;
+	unsigned char back_light :1;
+	unsigned char break_light :1;
+	unsigned char rear_fog_light :1;
+
+
+	unsigned char front_door_open :1;
+	unsigned char mid_door_open :1;
+	unsigned char relay_power :1;
+	unsigned char wc_light :1;
+	unsigned char third_bridge :1;
+	unsigned char :1;
+	unsigned char engine_water_level :1;
+	unsigned char rear_compartment_door_inductive_switch :1;
+
 
 } main_can_module_send_data;
 
 typedef struct srceen_send2_can {
+	unsigned char :8;
+
+	unsigned char :8;
+
+	unsigned char electric_road_switch :1;
+	unsigned char :1;
+	unsigned char front_door_off :1;
+	unsigned char front_door_on :1;
+	unsigned char :1;
+	unsigned char front_fog_light :1;
+	unsigned char :2;
+
+	unsigned char :3;
+	unsigned char trumpet_switch :1;
+	unsigned char ac_power_switch :1;
+	unsigned char :3;
+
+	unsigned char high_vol_light:1;
+	unsigned char mid_door_on :1;
+	unsigned char mid_door_off :1;
+	unsigned char tv_power :1;
+	unsigned char :3;
+	unsigned char luggage_compartment_light :1;
 
 	unsigned char luggage_shelf_light :1;
 	unsigned char top_blue_light :1;
@@ -473,33 +502,10 @@ typedef struct srceen_send2_can {
 	unsigned char top_single_light :1;
 	unsigned char read_light :1;
 
-	unsigned char :1;
-	unsigned char mid_door_on :1;
-	unsigned char mid_door_off :1;
-	unsigned char tv_power :1;
-	unsigned char :3;
-	unsigned char luggage_compartment_light :1;
+	unsigned char :7;
+	unsigned char rear_fog_light:1;
 
-	unsigned char :3;
-	unsigned char trumpet_switch :1;
-	unsigned char ac_switch :1;
-	unsigned char :0;
-
-	unsigned char rear_fog_light :1;
-	unsigned char :0;
-
-	unsigned char :8;
-
-	unsigned char :2;
-	unsigned char front_door_off :1;
-	unsigned char front_door_on :1;
-	unsigned char :1;
-	unsigned char front_fog_light :1;
-	unsigned char :0;
-
-	unsigned char :8;
-
-	unsigned char :8;
+	unsigned char :8
 
 } srceen_send2_can_data;
 
@@ -516,3 +522,20 @@ typedef struct screen_send2ac {
 
 } screen_send2ac_data;
 
+typedef struct screen_send2mode{
+	unsigned char :8;
+	unsigned char mode;
+	unsigned char :8;
+	unsigned char :8;
+	unsigned char :8;
+	unsigned char :8;
+	unsigned char :8;
+	unsigned char :8;
+}screen_send2mode_data;
+
+typedef struct batteryModuleHighTemperature_struct {
+	__u16 t1;
+	__u16 t2;
+	__u16 t3;
+	__u16 t4;
+} batteryModuleHighTemperature;
